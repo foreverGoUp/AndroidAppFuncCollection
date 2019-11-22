@@ -1,0 +1,111 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //support
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies.design
+    api rootProject.ext.dependencies.recyclerview
+    api rootProject.ext.dependencies.cardview
+    api rootProject.ext.dependencies["constraint-layout"]
+
+    //retrofit
+    api rootProject.ext.dependencies.retrofit2
+    api rootProject.ext.dependencies["retrofit2-converter-scalars"]
+    api rootProject.ext.dependencies["retrofit2-converter-gson"]
+    api rootProject.ext.dependencies["retrofit2-adapter-rxjava2"]
+    api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
+    //rxjava
+    api rootProject.ext.dependencies.rxjava2
+    api rootProject.ext.dependencies.rxandroid2
+    //rxlifecycle
+    api rootProject.ext.dependencies["trello-rxlifecycle"]
+    api rootProject.ext.dependencies["trello-rxlifecycle-components"]
+    //权限请求
+    api rootProject.ext.dependencies.rxpermissions
+    //dagger
+    api rootProject.ext.dependencies.dagger
+//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    api rootProject.ext.dependencies["dagger-android"]
+//    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    api rootProject.ext.dependencies["dagger-android-support"]
+    //RecyclerView辅助
+    api rootProject.ext.dependencies.BRVAH
+    api rootProject.ext.dependencies.SmartRefreshLayout
+    api rootProject.ext.dependencies.SmartRefreshHeader
+    api rootProject.ext.dependencies.EasySwipeMenuLayout
+    //路由
+    api rootProject.ext.dependencies["router-api"]
+//    annotationProcessor rootProject.ext.dependencies["router-compiler"]
+    //图片
+    api rootProject.ext.dependencies.glide
+//    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies["glide-transformations"]
+    //片段管理
+    api rootProject.ext.dependencies.fragmentation
+    api rootProject.ext.dependencies["fragmentation-swipeback"]
+    //bk
+    api rootProject.ext.dependencies.butterknife
+//    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    //tabLayout
+    api rootProject.ext.dependencies.FlycoTabLayout
+    //
+    api rootProject.ext.dependencies["zxing-lite-andx"]
+    //轮播
+    api rootProject.ext.dependencies.banner
+    //图表
+    api rootProject.ext.dependencies.MPAndroidChart
+    //utils
+    api rootProject.ext.dependencies.utilcode
+    //json
+    api rootProject.ext.dependencies.fastjson
+    //log
+    api rootProject.ext.dependencies.logger
+    //db
+    api rootProject.ext.dependencies.greendao
+    api rootProject.ext.dependencies["greendao-db-sqlcipher"]
+    //eventbus
+    api rootProject.ext.dependencies.eventbus
+    //维护
+    api rootProject.ext.dependencies.bugly
+    api rootProject.ext.dependencies["bugly-native"]
+//    api rootProject.ext.dependencies["bugly-symtabfileuploader"]
+    debugApi rootProject.ext.dependencies["leakcanary-debug"]
+    releaseApi rootProject.ext.dependencies["leakcanary-release"]
+
+
+    //compiler from above
+//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+//    annotationProcessor rootProject.ext.dependencies["router-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}

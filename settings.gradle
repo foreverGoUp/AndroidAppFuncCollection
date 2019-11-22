@@ -1,0 +1,2 @@
+include ':app', ':common_service', ':module_home', ':androiddevelophelp'
+rootProject.name='AppFuncCollection'

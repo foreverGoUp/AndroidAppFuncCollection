@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/recommend"
+        android:icon="@drawable/home_tab_recommend"
+        android:title="推荐"
+        app:showAsAction="always"/>
+    <item android:id="@+id/focus"
+        android:icon="@drawable/home_tab_focus"
+        android:title="关注"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/find"
+        android:icon="@drawable/home_tab_find"
+        android:title="发现"
+        app:showAsAction="never"/>
+</menu>
