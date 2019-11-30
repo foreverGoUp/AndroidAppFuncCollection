@@ -2,7 +2,7 @@ package com.kc.appfunccollection.ui.welcome;
 
 import android.view.View;
 
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.util.RxUtils;
 
 import java.util.concurrent.TimeUnit;

@@ -1,16 +1,12 @@
 package com.kc.appfunccollection.ui.welcome;
 
-import androidx.databinding.DataBindingUtil;
-
-import android.os.Bundle;
-
 import com.blankj.utilcode.util.BarUtils;
 import com.dovar.router_api.router.DRouter;
 import com.kc.appfunccollection.R;
 import com.kc.appfunccollection.databinding.ActivityWelcomeBinding;
-import com.kc.common_service.base.BaseActivity;
+import com.kc.common_service.base.AppBaseActivity;
 
-public class WelcomeActivity extends BaseActivity<ActivityWelcomeBinding, ViewModel> implements INavigator {
+public class WelcomeActivity extends AppBaseActivity<ActivityWelcomeBinding, ViewModel> implements INavigator {
 
     @Override
     protected int getLayout() {

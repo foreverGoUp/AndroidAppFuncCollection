@@ -1,24 +1,21 @@
 package com.kc.module_home.rv.titleStopAtTop;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.os.Bundle;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.common_service.helper.recycler_view.TitleItemDecoration;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityTitleStopAtTopBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 @Route(path = "rv/titleStopAtTop")
-public class TitleStopAtTopActivity extends BaseActivity<ActivityTitleStopAtTopBinding, BaseViewModel> {
+public class TitleStopAtTopActivity extends AppBaseActivity<ActivityTitleStopAtTopBinding, BaseViewModel> {
 
 
     @Override

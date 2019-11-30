@@ -1,6 +1,4 @@
-package com.kc.common_service.base.vm;
-
-import com.kc.common_service.base.viewNavigator.IBaseViewNavigator;
+package com.kc.androiddevelophelp.base.mvvm;
 
 /**
  * * ckc 19-10-19

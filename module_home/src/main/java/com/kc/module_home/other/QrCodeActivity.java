@@ -1,13 +1,5 @@
 package com.kc.module_home.other;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentUris;
@@ -24,17 +16,20 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import com.blankj.utilcode.util.DeviceUtils;
-import com.blankj.utilcode.util.FlashlightUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.dovar.router_annotation.Route;
-import com.kc.common_service.base.BaseActivity;
 import com.kc.common_service.util.RxUtils;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityQrCodeBinding;
 import com.king.zxing.CaptureActivity;
 import com.king.zxing.util.CodeUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 @Route(path = "other/qrCode")
 public class QrCodeActivity extends CaptureActivity {

@@ -5,17 +5,17 @@ import android.widget.ImageView;
 
 import com.dovar.router_annotation.Route;
 import com.dovar.router_api.router.DRouter;
+import com.kc.androiddevelophelp.adapter.ViewPagerAdapter;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.appfunccollection.R;
 import com.kc.appfunccollection.databinding.ActivityGuideBinding;
-import com.kc.common_service.adapter.ViewViewPagerAdapter;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = "app/guide")
-public class GuideActivity extends BaseActivity<ActivityGuideBinding, BaseViewModel> {
+public class GuideActivity extends AppBaseActivity<ActivityGuideBinding, BaseViewModel> {
 
     @Override
     protected boolean isUseStatusBarSpace() {
@@ -52,7 +52,7 @@ public class GuideActivity extends BaseActivity<ActivityGuideBinding, BaseViewMo
 
             data.add(imageView);
         }
-        ViewViewPagerAdapter mAdapter = new ViewViewPagerAdapter(data);
+        ViewPagerAdapter mAdapter = new ViewPagerAdapter(data);
         mDataBinding.vp.setAdapter(mAdapter);
     }
 }

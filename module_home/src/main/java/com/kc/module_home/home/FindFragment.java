@@ -2,13 +2,13 @@ package com.kc.module_home.home;
 
 import android.os.Bundle;
 
-import com.kc.common_service.base.BaseFragment;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseFragment;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.FragmentFindBinding;
 
 
-public class FindFragment extends BaseFragment<FragmentFindBinding, BaseViewModel> {
+public class FindFragment extends AppBaseFragment<FragmentFindBinding, BaseViewModel> {
 
     public static FindFragment newInstance() {
         Bundle args = new Bundle();

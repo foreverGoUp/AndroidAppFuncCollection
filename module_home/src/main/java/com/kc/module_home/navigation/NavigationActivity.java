@@ -1,10 +1,5 @@
 package com.kc.module_home.navigation;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import io.reactivex.functions.Consumer;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,19 +9,23 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dovar.router_annotation.Route;
 import com.dovar.router_api.router.DRouter;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityNavigationBinding;
-import com.king.zxing.CaptureActivity;
 import com.king.zxing.Intents;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import io.reactivex.functions.Consumer;
+
 @Route(path = "home/navigation")
-public class NavigationActivity extends BaseActivity<ActivityNavigationBinding, BaseViewModel> {
+public class NavigationActivity extends AppBaseActivity<ActivityNavigationBinding, BaseViewModel> {
 
     @Override
     protected int getLayout() {

@@ -26,6 +26,7 @@ ext {
     ]
 
     dependVersion = [
+            //support库最后一个发布版本，如果想使用该版本，则应用的编译sdk版本必须在27及以下
             support : "28.0.0",
             dagger  : "2.24",
             glide   : "4.9.0"
@@ -49,7 +50,7 @@ ext {
             cardview                : "com.android.support:cardview-v7:${dependVersion.support}",
             "constraint-layout"     : "com.android.support.constraint:constraint-layout:1.0.2",
 
-            //androidx,api 28+,support库
+            //androidx,应用编译sdk在28及以上将只能使用androidx库中的support类和其他类。
             androidx                : "androidx.appcompat:appcompat:1.0.2",
             constraintlayout        : "androidx.constraintlayout:constraintlayout:1.1.3",
             //包含TabLayout

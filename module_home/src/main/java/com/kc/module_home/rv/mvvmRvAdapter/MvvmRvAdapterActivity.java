@@ -1,11 +1,7 @@
 package com.kc.module_home.rv.mvvmRvAdapter;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.dovar.router_annotation.Route;
-import com.kc.common_service.base.BaseActivity;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityMvvmRvAdapterBinding;
 import com.kc.module_home.rv.mvvmRvAdapter.adapter.Adapter;
@@ -13,8 +9,12 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 @Route(path = "rv/mvvmAdapter")
-public class MvvmRvAdapterActivity extends BaseActivity<ActivityMvvmRvAdapterBinding, ViewModel> {
+public class MvvmRvAdapterActivity extends AppBaseActivity<ActivityMvvmRvAdapterBinding, ViewModel> {
 
 
     @Override

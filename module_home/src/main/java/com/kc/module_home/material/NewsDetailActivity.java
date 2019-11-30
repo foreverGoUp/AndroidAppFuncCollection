@@ -1,13 +1,13 @@
 package com.kc.module_home.material;
 
 import com.dovar.router_annotation.Route;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityNewsDetailBinding;
 
 @Route(path = "home/news_detail")
-public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding, BaseViewModel> {
+public class NewsDetailActivity extends AppBaseActivity<ActivityNewsDetailBinding, BaseViewModel> {
 
     @Override
     protected boolean isUseStatusBarSpace() {

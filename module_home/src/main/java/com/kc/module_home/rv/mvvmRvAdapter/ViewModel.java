@@ -1,7 +1,7 @@
 package com.kc.module_home.rv.mvvmRvAdapter;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.util.RandomUtils;
 import com.kc.common_service.util.RxUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

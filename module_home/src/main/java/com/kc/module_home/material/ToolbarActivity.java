@@ -12,8 +12,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.common_service.helper.recycler_view.DividerVerticalGridItemDecoration;
 import com.kc.common_service.util.RxUtils;
 import com.kc.module_home.R;
@@ -33,7 +33,7 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
 @Route(path = "home/toolbar")
-public class ToolbarActivity extends BaseActivity<ActivityToolbarBinding, BaseViewModel> {
+public class ToolbarActivity extends AppBaseActivity<ActivityToolbarBinding, BaseViewModel> {
 
     @Override
     protected int getLayout() {

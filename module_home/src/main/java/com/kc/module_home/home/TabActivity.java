@@ -2,8 +2,8 @@ package com.kc.module_home.home;
 
 import com.dovar.router_annotation.Route;
 import com.google.android.material.tabs.TabLayout;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityTabBinding;
 
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 @Route(path = "home/tab")
-public class TabActivity extends BaseActivity<ActivityTabBinding, BaseViewModel> {
+public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewModel> {
 
     private int mCurrentPos = -1;
     private String[] mFragmentTags = new String[]{RecommendFragment.class.getSimpleName(), FocusFragment.class.getSimpleName(), FindFragment.class.getSimpleName()};

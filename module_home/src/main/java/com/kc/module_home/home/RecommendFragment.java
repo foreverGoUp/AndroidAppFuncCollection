@@ -2,8 +2,8 @@ package com.kc.module_home.home;
 
 import android.os.Bundle;
 
-import com.kc.common_service.base.BaseFragment;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseFragment;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.FragmentRecommendBinding;
 

@@ -1,10 +1,6 @@
-package com.kc.common_service.base;
+package com.kc.androiddevelophelp.base.mvvm;
 
-import android.graphics.Color;
 import android.os.Bundle;
-
-import com.blankj.utilcode.util.BarUtils;
-import com.kc.common_service.base.vm.BaseViewModel;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +16,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isUseStatusBarSpace()) BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
         mDataBinding = DataBindingUtil.setContentView(this, getLayout());
         init();
     }

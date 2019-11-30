@@ -4,19 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
-
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
-import com.kc.common_service.base.BaseActivity;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseActivity;
 import com.kc.common_service.util.RandomUtils;
 import com.kc.common_service.util.RxUtils;
 import com.kc.module_home.R;
@@ -31,8 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
+
 @Route(path = "rv/refresh")
-public class RecyclerViewActivity extends BaseActivity<ActivityRecyclerViewBinding, BaseViewModel> {
+public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBinding, BaseViewModel> {
 
     BaseQuickAdapter<String, BaseViewHolder> mAdapter;
     //是否测试纸飞机效果的下拉刷新，如果是，则需要修改界面的布局文件引用和Bindindg类。

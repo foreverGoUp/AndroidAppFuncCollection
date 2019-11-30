@@ -3,13 +3,13 @@ package com.kc.module_home.home;
 import android.os.Bundle;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.kc.common_service.base.BaseFragment;
-import com.kc.common_service.base.vm.BaseViewModel;
+import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import com.kc.common_service.base.AppBaseFragment;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.FragmentFindBinding;
 
 
-public class VpFragment extends BaseFragment<FragmentFindBinding, BaseViewModel> {
+public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewModel> {
 
     private int mIndex;
 
