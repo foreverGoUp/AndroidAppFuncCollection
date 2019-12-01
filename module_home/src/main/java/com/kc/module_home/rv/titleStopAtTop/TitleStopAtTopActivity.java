@@ -1,5 +1,7 @@
 package com.kc.module_home.rv.titleStopAtTop;
 
+import android.os.Bundle;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
@@ -19,12 +21,12 @@ public class TitleStopAtTopActivity extends AppBaseActivity<ActivityTitleStopAtT
 
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_title_stop_at_top;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         final List<Entity> data = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             if (i<3){
@@ -56,5 +58,10 @@ public class TitleStopAtTopActivity extends AppBaseActivity<ActivityTitleStopAtT
             }
         }));
         mDataBinding.recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

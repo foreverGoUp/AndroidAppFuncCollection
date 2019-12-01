@@ -2,18 +2,24 @@ package com.kc.androiddevelophelp.base.common;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 /**
  * 基本懒加载片段
  * 20191130 ckc
+ *
+ * 建议当片段通过viewpager adapter展示时使用懒加载方式。
+ * 懒加载相关方法
+ * onActivityCreated、setUserVisibleHint、lazyLoad、onLazyLoad、onUserVisibleAfterLazyLoad、onResumeAfterLazyLoad
  */
-public class BaseLazyFragment extends Fragment {
+public abstract class BaseLazyFragment extends RootFragment {
 
-    private boolean mIsLog = true;
-    protected final String TAG = this.getClass().getSimpleName();
+    protected boolean mIsLog = false;
 
     private boolean mIsPreparedForLazyLoad = false;//是否为懒加载的视图准备好了
     private boolean mIsLazyLoaded = false;//是否已经懒加载
@@ -33,6 +39,14 @@ public class BaseLazyFragment extends Fragment {
         lazyLoad();
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (mIsLog)
+            Log.e(TAG, hashCode() + " onCreateView >>>>>>>>>>>>>>>>>>>>>>");
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
     /**
      * 在onCreateView执行完后被回调
      */
@@ -42,6 +56,13 @@ public class BaseLazyFragment extends Fragment {
         if (mIsLog) Log.e(TAG, hashCode() + " onActivityCreated >>>>>>>>>>>>>>>>>>>>>>");
         mIsPreparedForLazyLoad = true;
         lazyLoad();
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (mIsLog) Log.e(TAG, hashCode() + " onViewStateRestored >>>>>>>>>>>>>>>>>>>>>>");
+
     }
 
 
@@ -104,6 +125,21 @@ public class BaseLazyFragment extends Fragment {
         }
     }
 
+    /**
+     * 活动从前台切换到后台会回调该方法
+     */
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mIsLog) Log.e(TAG, hashCode() + " onSaveInstanceState >>>>>>>>>>>>>>>>>>>>>>");
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mIsLog) Log.e(TAG, hashCode() + " onStop >>>>>>>>>>>>>>>>>>>>>>");
+    }
 
     @Override
     public void onDestroyView() {

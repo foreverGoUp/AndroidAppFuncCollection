@@ -1,5 +1,7 @@
 package com.kc.module_home.home;
 
+import android.os.Bundle;
+
 import com.dovar.router_annotation.Route;
 import com.google.android.material.tabs.TabLayout;
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
@@ -22,16 +24,17 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
     }
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_tab;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         initTabLayout();
 //        initFragments();
         switchFragment(0);
     }
+
 
     private void initFragments() {
         getSupportFragmentManager().beginTransaction()
@@ -104,5 +107,10 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
             fragmentTransaction.add(R.id.frameLayout_frag_container, fragment, mFragmentTags[pos]);
         }
         fragmentTransaction.show(fragment).commitAllowingStateLoss();
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

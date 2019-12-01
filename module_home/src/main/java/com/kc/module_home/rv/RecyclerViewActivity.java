@@ -1,6 +1,7 @@
 package com.kc.module_home.rv;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Interpolator;
 
@@ -42,12 +43,12 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
     private List<String> styleTitles = new ArrayList<>();
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_recycler_view;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         //rv refresh styles
         styleTitles.add("ClassicsHeader");
         styleTitles.add("BezierRadarHeader");//com.scwang.smartrefresh.layout.header.
@@ -205,6 +206,11 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
 //                mDataBinding.toolbar.setTranslationY(-offset);
 //            }
 //        });
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 
     public static class ElasticOutInterpolator implements Interpolator {

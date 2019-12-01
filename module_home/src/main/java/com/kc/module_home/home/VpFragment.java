@@ -1,6 +1,7 @@
 package com.kc.module_home.home;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
@@ -10,6 +11,10 @@ import com.kc.module_home.databinding.FragmentFindBinding;
 
 
 public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewModel> {
+
+    public VpFragment() {
+        mIsLog = true;
+    }
 
     private int mIndex;
 
@@ -22,12 +27,13 @@ public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewMod
     }
 
     @Override
-    protected int getLayout() {
+    protected int onGetViewLayout() {
         return R.layout.fragment_vp;
     }
 
     @Override
-    protected void init() {
+    protected void init(View view) {
+        super.init(view);
         mIndex = getArguments().getInt("index");
     }
 
@@ -35,5 +41,10 @@ public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewMod
     protected void onLazyLoad() {
         super.onLazyLoad();
         ToastUtils.showShort("片段"+mIndex+"开始懒加载");
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

@@ -1,5 +1,7 @@
 package com.kc.module_home.rv.mvvmRvAdapter;
 
+import android.os.Bundle;
+
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
@@ -18,12 +20,12 @@ public class MvvmRvAdapterActivity extends AppBaseActivity<ActivityMvvmRvAdapter
 
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_mvvm_rv_adapter;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         mViewModel = new ViewModel();
         mDataBinding.setVm(mViewModel);
 
@@ -45,5 +47,10 @@ public class MvvmRvAdapterActivity extends AppBaseActivity<ActivityMvvmRvAdapter
         });
 
         mViewModel.initData();
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

@@ -1,5 +1,7 @@
 package com.kc.module_home.material;
 
+import android.os.Bundle;
+
 import com.dovar.router_annotation.Route;
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
@@ -15,12 +17,12 @@ public class NewsDetailActivity extends AppBaseActivity<ActivityNewsDetailBindin
     }
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_news_detail;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         setSupportActionBar(mDataBinding.toolbar);
         mDataBinding.collapsingToolbarLayout.setTitle("我是一条有个性的新闻");
         mDataBinding.tvNewsContent.setText("有个性的新闻有个性的新闻有个性的新闻有个性的新闻" +
@@ -28,5 +30,10 @@ public class NewsDetailActivity extends AppBaseActivity<ActivityNewsDetailBindin
                 "有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻" +
                 "有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻" +
                 "有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻有个性的新闻");
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

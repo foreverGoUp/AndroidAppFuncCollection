@@ -1,5 +1,6 @@
 package com.kc.module_home.material;
 
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,12 +37,12 @@ import io.reactivex.functions.Consumer;
 public class ToolbarActivity extends AppBaseActivity<ActivityToolbarBinding, BaseViewModel> {
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_toolbar;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         //toolbar
         setSupportActionBar(mDataBinding.toolbar);
         ActionBar actionBar=getSupportActionBar();
@@ -131,5 +132,10 @@ public class ToolbarActivity extends AppBaseActivity<ActivityToolbarBinding, Bas
             mDataBinding.drawLayout.openDrawer(GravityCompat.START);
         }
         return true;
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

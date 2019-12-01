@@ -1,5 +1,6 @@
 package com.kc.module_home.other;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -23,12 +24,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 public class DialogActivity extends AppBaseActivity<ActivityDialogBinding, BaseViewModel> {
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_dialog;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         List<String> data = new ArrayList<>();
         data.add("提示");
         data.add("确认");
@@ -73,5 +74,10 @@ public class DialogActivity extends AppBaseActivity<ActivityDialogBinding, BaseV
                 }
             }
         });
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

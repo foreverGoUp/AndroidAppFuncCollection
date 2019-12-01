@@ -1,6 +1,7 @@
 package com.kc.module_home.home;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.kc.androiddevelophelp.base.mvvm.BaseFragment;
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
@@ -23,12 +24,13 @@ public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, Ba
 
 
     @Override
-    protected int getLayout() {
+    protected int onGetViewLayout() {
         return R.layout.fragment_recommend;
     }
 
     @Override
-    protected void init() {
+    protected void init(View view) {
+        super.init(view);
         String[] titles = new String[10];
         for (int i = 0; i < 10; i++) {
             titles[i] = "标题"+i;
@@ -38,5 +40,10 @@ public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, Ba
             fragments.add(VpFragment.newInstance(i));
         }
         mDataBinding.slidingTabLayout.setViewPager(mDataBinding.viewPager, titles, getActivity(), fragments);
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

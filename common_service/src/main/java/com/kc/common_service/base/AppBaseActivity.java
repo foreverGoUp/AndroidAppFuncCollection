@@ -17,4 +17,8 @@ public abstract class AppBaseActivity<DB extends ViewDataBinding, VM extends Bas
         if (isUseStatusBarSpace()) BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
         super.onCreate(savedInstanceState);
     }
+
+    protected boolean isUseStatusBarSpace() {
+        return false;
+    }
 }

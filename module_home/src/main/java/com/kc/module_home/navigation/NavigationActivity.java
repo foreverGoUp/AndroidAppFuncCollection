@@ -3,6 +3,7 @@ package com.kc.module_home.navigation;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
@@ -28,12 +29,12 @@ import io.reactivex.functions.Consumer;
 public class NavigationActivity extends AppBaseActivity<ActivityNavigationBinding, BaseViewModel> {
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_navigation;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         mDataBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mDataBinding.recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         List<MySection> data = new ArrayList<>();
@@ -106,5 +107,10 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
             String result = data.getStringExtra(Intents.Scan.RESULT);
             ToastUtils.showShort(result);
         }
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }

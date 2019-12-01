@@ -19,12 +19,12 @@ public class FindFragment extends AppBaseFragment<FragmentFindBinding, BaseViewM
     }
 
     @Override
-    protected int getLayout() {
+    protected int onGetViewLayout() {
         return R.layout.fragment_find;
     }
 
     @Override
-    protected void init() {
+    protected void initViewModelAndBindDataBinding() {
 
     }
 }

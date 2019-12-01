@@ -19,51 +19,13 @@ public class FocusFragment extends AppBaseFragment<FragmentFocusBinding, BaseVie
     }
 
     @Override
-    protected int getLayout() {
+    protected int onGetViewLayout() {
         return R.layout.fragment_focus;
     }
 
     @Override
-    protected void init() {
+    protected void initViewModelAndBindDataBinding() {
 
     }
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        Log.e(TAG, "setUserVisibleHint-"+this.hashCode()+",visible:"+getUserVisibleHint()+","+isVisibleToUser);
-//    }
-//
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        Log.e(TAG, "onActivityCreated-"+this.hashCode());
-//    }
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        Log.e(TAG, "onCreateView-"+this.hashCode());
-//        return super.onCreateView(inflater, container, savedInstanceState);
-//    }
-//
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        Log.e(TAG, "onDestroyView-"+this.hashCode());
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        Log.e(TAG, "onPause-"+this.hashCode());
-//
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        Log.e(TAG, "onStop-"+this.hashCode());
-//
-//    }
 }

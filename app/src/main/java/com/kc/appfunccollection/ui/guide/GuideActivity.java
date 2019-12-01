@@ -1,5 +1,6 @@
 package com.kc.appfunccollection.ui.guide;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,12 +24,12 @@ public class GuideActivity extends AppBaseActivity<ActivityGuideBinding, BaseVie
     }
 
     @Override
-    protected int getLayout() {
+    protected int onGetContentViewLayout() {
         return R.layout.activity_guide;
     }
 
     @Override
-    protected void init() {
+    protected void init(Bundle savedInstanceState) {
         initVp();
     }
 
@@ -54,5 +55,10 @@ public class GuideActivity extends AppBaseActivity<ActivityGuideBinding, BaseVie
         }
         ViewPagerAdapter mAdapter = new ViewPagerAdapter(data);
         mDataBinding.vp.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void initViewModelAndBindDataBinding() {
+
     }
 }
