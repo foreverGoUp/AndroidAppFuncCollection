@@ -15,11 +15,9 @@ import androidx.annotation.Nullable;
  *
  * 建议当片段通过viewpager adapter展示时使用懒加载方式。
  * 懒加载相关方法
- * onActivityCreated、setUserVisibleHint、lazyLoad、onLazyLoad、onUserVisibleAfterLazyLoad、onResumeAfterLazyLoad
+ * onActivityCreated、setUserVisibleHint、lazyLoad、onLazyLoad、onUserVisibleAfterLazyLoad、onResumeWithUserVisible
  */
-public abstract class BaseLazyFragment extends RootFragment {
-
-    protected boolean mIsLog = false;
+public abstract class LazyFragment extends RootFragment {
 
     private boolean mIsPreparedForLazyLoad = false;//是否为懒加载的视图准备好了
     private boolean mIsLazyLoaded = false;//是否已经懒加载
@@ -87,7 +85,7 @@ public abstract class BaseLazyFragment extends RootFragment {
      * 子类重写改方法执行第一次加载数据
      */
     protected void onLazyLoad() {
-        if (mIsLog) Log.e(TAG, hashCode() + " onLazyLoad >>>>>>>>>>>>>>>>>>>>>>");
+        if (mIsLog) Log.e(TAG, hashCode() + " onLazyLoad -------------------------");
     }
 
     /**
@@ -95,15 +93,16 @@ public abstract class BaseLazyFragment extends RootFragment {
      * 懒加载之后，业务若需要片段每次可见时刷新数据则重写该方法执行启动刷新
      */
     protected void onUserVisibleAfterLazyLoad() {
-        if (mIsLog) Log.e(TAG, hashCode() + " onUserVisibleAfterLazyLoad >>>>>>>>>>>>>>>>>>>>>>");
+        if (mIsLog)
+            Log.e(TAG, hashCode() + " onUserVisibleAfterLazyLoad -------------------------");
     }
 
     /**
      * 当片段通过viewpager adapter展示时。
      * 懒加载之后，业务若需要片段每次活动从后台返回前台并处于可见时刷新数据则重写该方法执行启动刷新，该方法与onUserVisibleAfterLazyLoad不会被同时回调。
      */
-    protected void onResumeAfterLazyLoad() {
-        if (mIsLog) Log.e(TAG, hashCode() + " onResumeAfterLazyLoad >>>>>>>>>>>>>>>>>>>>>>");
+    protected void onResumeWithUserVisible() {
+        if (mIsLog) Log.e(TAG, hashCode() + " onResumeWithUserVisible -------------------------");
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -119,7 +118,7 @@ public abstract class BaseLazyFragment extends RootFragment {
         super.onResume();
         if (mIsLog) Log.e(TAG, hashCode() + " onResume >>>>>>>>>>>>>>>>>>>>>>");
         if (mIsOnResumeCallBacked && getUserVisibleHint()) {
-            onResumeAfterLazyLoad();
+            onResumeWithUserVisible();
         } else {
             mIsOnResumeCallBacked = true;
         }

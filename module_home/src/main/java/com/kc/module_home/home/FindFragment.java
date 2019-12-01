@@ -10,6 +10,10 @@ import com.kc.module_home.databinding.FragmentFindBinding;
 
 public class FindFragment extends AppBaseFragment<FragmentFindBinding, BaseViewModel> {
 
+    public FindFragment() {
+        mIsLog = true;
+    }
+
     public static FindFragment newInstance() {
         Bundle args = new Bundle();
 

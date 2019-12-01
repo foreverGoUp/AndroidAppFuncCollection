@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 public abstract class RootFragment extends Fragment {
 
     protected final String TAG = this.getClass().getSimpleName();
+    protected boolean mIsLog = false;
 
     @Nullable
     @Override

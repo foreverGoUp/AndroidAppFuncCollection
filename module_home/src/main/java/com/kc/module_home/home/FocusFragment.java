@@ -10,6 +10,10 @@ import com.kc.module_home.databinding.FragmentFocusBinding;
 
 public class FocusFragment extends AppBaseFragment<FragmentFocusBinding, BaseViewModel> {
 
+    public FocusFragment() {
+        mIsLog = true;
+    }
+
     public static FocusFragment newInstance() {
         Bundle args = new Bundle();
 

@@ -14,6 +14,10 @@ import androidx.fragment.app.Fragment;
 
 public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, BaseViewModel> {
 
+    public RecommendFragment() {
+        mIsLog = true;
+    }
+
     public static RecommendFragment newInstance() {
         Bundle args = new Bundle();
 

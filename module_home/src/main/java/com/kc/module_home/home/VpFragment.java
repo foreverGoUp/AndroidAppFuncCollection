@@ -13,7 +13,7 @@ import com.kc.module_home.databinding.FragmentFindBinding;
 public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewModel> {
 
     public VpFragment() {
-        mIsLog = true;
+        mIsLog = false;
     }
 
     private int mIndex;

@@ -31,21 +31,9 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
     @Override
     protected void init(Bundle savedInstanceState) {
         initTabLayout();
-//        initFragments();
         switchFragment(0);
     }
 
-
-    private void initFragments() {
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.frameLayout_frag_container, RecommendFragment.newInstance(), mFragmentTags[0])
-                .add(R.id.frameLayout_frag_container, FocusFragment.newInstance(), mFragmentTags[1])
-                .add(R.id.frameLayout_frag_container, FindFragment.newInstance(), mFragmentTags[2])
-                .hide(getSupportFragmentManager().findFragmentByTag(mFragmentTags[1]))
-                .hide(getSupportFragmentManager().findFragmentByTag(mFragmentTags[2]))
-                .show(getSupportFragmentManager().findFragmentByTag(mFragmentTags[mCurrentPos]))
-                .commit();
-    }
 
     private void initTabLayout() {
         mDataBinding.tabLayout.getTabSelectedIndicator().setAlpha(0);
@@ -71,6 +59,9 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
         });
     }
 
+    /**
+     * 获取某个标签位置的片段
+     */
     private Fragment getFragment(int pos){
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(mFragmentTags[pos]);
         if (fragment == null){
@@ -90,23 +81,24 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
         return fragment;
     }
 
+    /**
+     * 显示片段
+     */
     private void switchFragment(int pos){
-//        getSupportFragmentManager().beginTransaction()
-//                .hide(getSupportFragmentManager().findFragmentByTag(mFragmentTags[mCurrentPos]))
-//                .show(getSupportFragmentManager().findFragmentByTag(mFragmentTags[pos]))
-//                .commitAllowingStateLoss();
-
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         if (mCurrentPos != -1){
-            fragmentTransaction.hide(getFragment(mCurrentPos));
+            Fragment hideFragment = getFragment(mCurrentPos);
+            fragmentTransaction.hide(hideFragment);
+            hideFragment.setUserVisibleHint(false);//模拟片段交给vp adapter显示以致可以使用片段的懒加载方法
         }
 
         mCurrentPos = pos;
-        Fragment fragment = getFragment(pos);
-        if (!fragment.isAdded()){
-            fragmentTransaction.add(R.id.frameLayout_frag_container, fragment, mFragmentTags[pos]);
+        Fragment showFragment = getFragment(pos);
+        showFragment.setUserVisibleHint(true);//模拟片段交给vp adapter显示以致可以使用片段的懒加载方法
+        if (!showFragment.isAdded()) {
+            fragmentTransaction.add(R.id.frameLayout_frag_container, showFragment, mFragmentTags[pos]);
         }
-        fragmentTransaction.show(fragment).commitAllowingStateLoss();
+        fragmentTransaction.show(showFragment).commitAllowingStateLoss();
     }
 
     @Override
