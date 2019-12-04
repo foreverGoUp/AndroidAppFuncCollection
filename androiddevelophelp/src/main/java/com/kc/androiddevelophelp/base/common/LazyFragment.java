@@ -1,5 +1,6 @@
 package com.kc.androiddevelophelp.base.common;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,24 @@ public abstract class LazyFragment extends RootFragment {
     private boolean mIsLazyLoaded = false;//是否已经懒加载
     private boolean mIsOnResumeCallBacked = false;//是否第一次onResume()被回调过
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (mIsLog) Log.e(TAG, hashCode() + " onCreate >>>>>>>>>>>>>>>>>>>>>>");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (mIsLog) Log.e(TAG, hashCode() + " onAttach >>>>>>>>>>>>>>>>>>>>>>");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mIsLog) Log.e(TAG, hashCode() + " onStart >>>>>>>>>>>>>>>>>>>>>>");
+    }
+
     /**
      * 经常被回调
      */
@@ -43,6 +62,13 @@ public abstract class LazyFragment extends RootFragment {
         if (mIsLog)
             Log.e(TAG, hashCode() + " onCreateView >>>>>>>>>>>>>>>>>>>>>>");
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (mIsLog) Log.e(TAG, hashCode() + " onViewCreated >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     /**
@@ -132,6 +158,12 @@ public abstract class LazyFragment extends RootFragment {
         super.onSaveInstanceState(outState);
         if (mIsLog) Log.e(TAG, hashCode() + " onSaveInstanceState >>>>>>>>>>>>>>>>>>>>>>");
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mIsLog) Log.e(TAG, hashCode() + " onPause >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     @Override

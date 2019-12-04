@@ -14,6 +14,7 @@ import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityNavigationBinding;
+import com.kc.module_home.pagerAdapter.PagerAdapterTestActivity;
 import com.king.zxing.Intents;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -39,17 +40,18 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
         mDataBinding.recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         List<MySection> data = new ArrayList<>();
         data.add(new MySection(true, "首页"));
-        data.add(new MySection("新闻娱乐类多标签"));
+        data.add(1, new MySection("新闻娱乐类多标签"));
         data.add(new MySection(true, "原料风格"));
-        data.add(new MySection("可折叠标题栏"));
-        data.add(new MySection("toolbar+DrawerLayout+NavigationView+浮动按钮+可交互吐司+卡片式布局+下拉刷新+CoordinatorLayout+AppBarLayout"));
+        data.add(3, new MySection("可折叠标题栏"));
+        data.add(4, new MySection("toolbar+DrawerLayout+NavigationView+浮动按钮+可交互吐司+卡片式布局+下拉刷新+CoordinatorLayout+AppBarLayout"));
         data.add(new MySection(true, "RecyclerView"));
-        data.add(new MySection("refresh+侧滑选项"));
-        data.add(new MySection("mvvmAdapter"));
-        data.add(new MySection("titleStopAtTop"));
+        data.add(6, new MySection("refresh+侧滑选项"));
+        data.add(7, new MySection("mvvmAdapter"));
+        data.add(8, new MySection("titleStopAtTop"));
         data.add(new MySection(true, "其他"));
-        data.add(new MySection("二维码扫描"));
-        data.add(new MySection("对话框"));
+        data.add(10, new MySection("二维码扫描"));
+        data.add(11, new MySection("对话框"));
+        data.add(12, new MySection("多片段页面"));
 
         SectionAdapter adapter = new SectionAdapter(R.layout.item_navigation, R.layout.head_item_navigation, data);
         mDataBinding.recyclerView.setAdapter(adapter);
@@ -93,6 +95,9 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
                         break;
                     case 11:
                         DRouter.navigator("other/dialog").navigateTo(NavigationActivity.this);
+                        break;
+                    case 12:
+                        startActivity(new Intent(NavigationActivity.this, PagerAdapterTestActivity.class));
                         break;
                 }
             }

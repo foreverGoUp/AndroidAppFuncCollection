@@ -89,12 +89,12 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
         if (mCurrentPos != -1){
             Fragment hideFragment = getFragment(mCurrentPos);
             fragmentTransaction.hide(hideFragment);
-            hideFragment.setUserVisibleHint(false);//模拟片段交给vp adapter显示以致可以使用片段的懒加载方法
+//            hideFragment.setUserVisibleHint(false);//模拟片段交给vp adapter显示以致可以使用片段的懒加载方法
         }
 
         mCurrentPos = pos;
         Fragment showFragment = getFragment(pos);
-        showFragment.setUserVisibleHint(true);//模拟片段交给vp adapter显示以致可以使用片段的懒加载方法
+//        showFragment.setUserVisibleHint(true);//模拟片段交给vp adapter显示以致可以使用片段的懒加载方法
         if (!showFragment.isAdded()) {
             fragmentTransaction.add(R.id.frameLayout_frag_container, showFragment, mFragmentTags[pos]);
         }

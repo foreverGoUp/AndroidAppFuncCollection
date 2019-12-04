@@ -3,14 +3,13 @@ package com.kc.module_home.home;
 import android.os.Bundle;
 import android.view.View;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseFragment;
 import com.kc.module_home.R;
-import com.kc.module_home.databinding.FragmentFindBinding;
+import com.kc.module_home.databinding.FragmentVpBinding;
 
 
-public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewModel> {
+public class VpFragment extends AppBaseFragment<FragmentVpBinding, BaseViewModel> {
 
     public VpFragment() {
         mIsLog = false;
@@ -35,12 +34,13 @@ public class VpFragment extends AppBaseFragment<FragmentFindBinding, BaseViewMod
     protected void init(View view) {
         super.init(view);
         mIndex = getArguments().getInt("index");
+        mDataBinding.tvContent.setText(String.valueOf(mIndex));
     }
 
     @Override
     protected void onLazyLoad() {
         super.onLazyLoad();
-        ToastUtils.showShort("片段"+mIndex+"开始懒加载");
+//        ToastUtils.showShort("片段"+mIndex+"开始懒加载");
     }
 
     @Override
