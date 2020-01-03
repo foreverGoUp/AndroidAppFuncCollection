@@ -1,12 +1,12 @@
 package com.kc.module_home.rv.mvvmRvAdapter.adapter;
 
+import android.databinding.ObservableList;
+import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
 import com.kc.common_service.base.adapter.BaseAdapter;
 import com.kc.module_home.rv.mvvmRvAdapter.Commodity;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableList;
 
 public class Adapter extends BaseAdapter<ViewHolder> {
 

@@ -7,54 +7,56 @@
 
     </data>
 
-    <androidx.drawerlayout.widget.DrawerLayout
+    <android.support.v4.widget.DrawerLayout
         android:id="@+id/draw_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".material.ToolbarActivity">
 
-            <com.google.android.material.appbar.AppBarLayout
+            <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <androidx.appcompat.widget.Toolbar
+
+                <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/colorPrimary"
-                    app:layout_scrollFlags="scroll|enterAlways|snap"/>
-            </com.google.android.material.appbar.AppBarLayout>
+                    app:layout_scrollFlags="scroll|enterAlways|snap" />
+            </android.support.design.widget.AppBarLayout>
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
-                <androidx.recyclerview.widget.RecyclerView
+
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_15"/>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                    android:padding="@dimen/dp_15" />
+            </android.support.v4.widget.SwipeRefreshLayout>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/floating_action_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_margin="@dimen/dp_15"
-                android:src="@drawable/ic_done_white_24dp"/>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                android:src="@drawable/ic_done_white_24dp" />
+        </android.support.design.widget.CoordinatorLayout>
 
-        <com.google.android.material.navigation.NavigationView
+        <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:menu="@menu/drawer_layout_nav_menu"
-            app:headerLayout="@layout/drawer_layout_nav_header"/>
-    </androidx.drawerlayout.widget.DrawerLayout>
+            app:headerLayout="@layout/drawer_layout_nav_header" />
+    </android.support.v4.widget.DrawerLayout>
 </layout>

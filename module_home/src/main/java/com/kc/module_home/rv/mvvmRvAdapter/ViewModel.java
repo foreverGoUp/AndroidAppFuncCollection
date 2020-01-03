@@ -1,6 +1,10 @@
 package com.kc.module_home.rv.mvvmRvAdapter;
 
-import com.blankj.utilcode.util.ToastUtils;
+import android.databinding.BindingAdapter;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableInt;
+import android.databinding.ObservableList;
+
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.util.RandomUtils;
 import com.kc.common_service.util.RxUtils;
@@ -10,10 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableInt;
-import androidx.databinding.ObservableList;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -59,7 +59,7 @@ public class ViewModel extends BaseViewModel {
                         }
                         mObservableList.clear();
                         mObservableList.addAll(data);
-                        ToastUtils.showShort("刷新完条数："+size);
+//                        ToastUtils.showShort("刷新完条数："+size);
 
                         if (size != 10){
                             //可观察者变量值赋值相同时不会触发通知改变
@@ -92,7 +92,7 @@ public class ViewModel extends BaseViewModel {
                             data.add(new Commodity(size+" 新商品"+(i+1)));
                         }
                         mObservableList.addAll(data);
-                        ToastUtils.showShort("加载条数："+size);
+//                        ToastUtils.showShort("加载条数："+size);
 
                         if (size != 10){
                             //可观察者变量值赋值相同时不会触发通知改变

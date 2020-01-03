@@ -1,12 +1,11 @@
 package com.kc.module_home.rv.mvvmRvAdapter.adapter;
 
+import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
 import com.kc.common_service.base.adapter.BaseViewHolder;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ItemCommodityBinding;
-
-import androidx.annotation.NonNull;
 
 public class ViewHolder extends BaseViewHolder<ItemCommodityBinding, ItemViewModel> {
 

@@ -1,6 +1,8 @@
 package com.kc.module_home.rv.titleStopAtTop;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -14,8 +16,6 @@ import com.kc.module_home.databinding.ActivityTitleStopAtTopBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 @Route(path = "rv/titleStopAtTop")
 public class TitleStopAtTopActivity extends AppBaseActivity<ActivityTitleStopAtTopBinding, BaseViewModel> {
 

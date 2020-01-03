@@ -6,17 +6,18 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.databinding.DataBindingUtil;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.util.RxUtils;
 import com.kc.module_home.R;
@@ -25,8 +26,6 @@ import com.king.zxing.CaptureActivity;
 import com.king.zxing.util.CodeUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -83,7 +82,7 @@ public class QrCodeActivity extends CaptureActivity {
                                     pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                                     startActivityForResult(pickIntent, 11);
                                 }else {
-                                    ToastUtils.showShort("抱歉，需要启用权限才能使用");
+//                                    ToastUtils.showShort("抱歉，需要启用权限才能使用");
                                 }
                             }
                         });
@@ -110,7 +109,7 @@ public class QrCodeActivity extends CaptureActivity {
                     .subscribe(new Consumer<String>() {
                         @Override
                         public void accept(String s) throws Exception {
-                            ToastUtils.showLong(s);
+//                            ToastUtils.showLong(s);
                             finish();
                         }
                     });
@@ -168,7 +167,7 @@ public class QrCodeActivity extends CaptureActivity {
 
     @Override
     public boolean onResultCallback(String result) {
-        ToastUtils.showLong(result);
+//        ToastUtils.showLong(result);
         finish();
         return true;
     }

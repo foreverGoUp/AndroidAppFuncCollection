@@ -1,12 +1,12 @@
 package com.kc.module_home.rv.mvvmRvAdapter.adapter;
 
+import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.kc.common_service.base.adapter.BaseItemViewModel;
 import com.kc.module_home.rv.mvvmRvAdapter.Commodity;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
 
 public class ItemViewModel extends BaseItemViewModel<Commodity> {
 

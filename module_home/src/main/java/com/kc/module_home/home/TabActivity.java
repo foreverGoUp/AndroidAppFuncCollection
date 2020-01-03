@@ -1,16 +1,15 @@
 package com.kc.module_home.home;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
 import com.dovar.router_annotation.Route;
-import com.google.android.material.tabs.TabLayout;
 import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityTabBinding;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 @Route(path = "home/tab")
 public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewModel> {

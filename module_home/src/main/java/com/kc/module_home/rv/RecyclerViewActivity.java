@@ -2,10 +2,13 @@ package com.kc.module_home.rv;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
@@ -25,10 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -152,7 +151,7 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
                                     data.add("new item "+i);
                                 }
                                 mAdapter.addData(data);
-                                ToastUtils.showShort("新增数据条数："+size);
+//                                ToastUtils.showShort("新增数据条数："+size);
                                 if (size == 20){
                                     mDataBinding.smartRefreshLayout.finishLoadMore();
                                 }else {
@@ -188,7 +187,7 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
             data.add("item "+i);
         }
         mAdapter.setNewData(data);
-        ToastUtils.showShort("刷新数据条数："+size);
+//        ToastUtils.showShort("刷新数据条数："+size);
 
         return size;
     }

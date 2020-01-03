@@ -1,7 +1,7 @@
 package com.kc.common_service.base.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
+import android.databinding.ObservableField;
+import android.support.annotation.NonNull;
 
 /**
  * Item的ViewModel的基类

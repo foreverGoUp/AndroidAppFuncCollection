@@ -2,7 +2,6 @@ package com.kc.appfunccollection.ui.welcome;
 
 import android.os.Bundle;
 
-import com.blankj.utilcode.util.BarUtils;
 import com.dovar.router_api.router.DRouter;
 import com.kc.appfunccollection.R;
 import com.kc.appfunccollection.databinding.ActivityWelcomeBinding;
@@ -17,7 +16,7 @@ public class WelcomeActivity extends AppBaseActivity<ActivityWelcomeBinding, Vie
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        BarUtils.setStatusBarLightMode(this, true);
+//        BarUtils.setStatusBarLightMode(this, true);
 
         mViewModel = new ViewModel(this);
         mDataBinding.setVm(mViewModel);

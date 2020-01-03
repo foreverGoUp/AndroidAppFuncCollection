@@ -1,9 +1,10 @@
 package com.kc.androiddevelophelp.base.mvvm;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
+
 import com.kc.androiddevelophelp.base.common.RootActivity;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseViewModel> extends RootActivity {
 

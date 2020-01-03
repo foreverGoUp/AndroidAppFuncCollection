@@ -1,11 +1,8 @@
 package com.kc.common_service.base.adapter;
 
-import android.view.ViewGroup;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableList;
-import androidx.recyclerview.widget.RecyclerView;
+import android.databinding.ObservableList;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * ckc 2019-10-19

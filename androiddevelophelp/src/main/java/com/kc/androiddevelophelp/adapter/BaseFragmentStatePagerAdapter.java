@@ -1,12 +1,11 @@
 package com.kc.androiddevelophelp.adapter;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
  *片段超出不可见片段范围后会摧毁片段实例。适合大量片段的页面（新闻主题页面）的显示。

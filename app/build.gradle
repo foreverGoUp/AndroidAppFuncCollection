@@ -9,7 +9,7 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //router
         javaCompileOptions {
@@ -42,17 +42,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation project(':common_service')//公共服务库
     implementation project(path: ':module_home')
     annotationProcessor rootProject.ext.dependencies["router-compiler"]//路由
-
-//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["router-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-
-
 }

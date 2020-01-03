@@ -9,7 +9,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -31,14 +31,42 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //公共库
     api project(path: ':androiddevelophelp')            //安卓开发帮助库
+    //support库（compileSdkVersion 27-）
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies.design
+    api rootProject.ext.dependencies.recyclerview
+    api rootProject.ext.dependencies.cardview
 
-//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    //rxjava
+    api rootProject.ext.dependencies.rxjava2
+    api rootProject.ext.dependencies.rxandroid2
+
+    //路由
+     api rootProject.ext.dependencies["router-api"]
 //    annotationProcessor rootProject.ext.dependencies["router-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
+    //tabLayout
+    api rootProject.ext.dependencies.FlycoTabLayout
+
+    //     //图片加载
+    api rootProject.ext.dependencies["glide-support"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler-support"]
+    api rootProject.ext.dependencies["glide-transformations"]
+
+    //RecyclerView辅助
+    api rootProject.ext.dependencies.BRVAH
+//     api rootProject.ext.dependencies["BRVAH-support"]
+    api rootProject.ext.dependencies.SmartRefreshLayout
+    api rootProject.ext.dependencies.SmartRefreshHeader
+
+    //权限请求
+    api rootProject.ext.dependencies.rxpermissions
+
+    //二维码
+    api rootProject.ext.dependencies["zxing-lite-support"]
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

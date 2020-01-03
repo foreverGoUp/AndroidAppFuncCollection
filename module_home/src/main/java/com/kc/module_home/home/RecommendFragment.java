@@ -1,6 +1,7 @@
 package com.kc.module_home.home;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.kc.androiddevelophelp.base.mvvm.BaseFragment;
@@ -10,7 +11,6 @@ import com.kc.module_home.databinding.FragmentRecommendBinding;
 
 import java.util.ArrayList;
 
-import androidx.fragment.app.Fragment;
 
 public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, BaseViewModel> {
 

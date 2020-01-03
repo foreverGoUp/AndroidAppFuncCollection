@@ -1,12 +1,13 @@
 package com.kc.module_home.navigation;
 
+import android.support.annotation.NonNull;
+
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.kc.module_home.R;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
 
 public class SectionAdapter extends BaseSectionQuickAdapter<MySection, BaseViewHolder> {
     /**

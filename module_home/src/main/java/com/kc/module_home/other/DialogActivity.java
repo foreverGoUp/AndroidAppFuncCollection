@@ -1,6 +1,9 @@
 package com.kc.module_home.other;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -15,10 +18,6 @@ import com.kc.module_home.databinding.ActivityDialogBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 @Route(path = "other/dialog")
 public class DialogActivity extends AppBaseActivity<ActivityDialogBinding, BaseViewModel> {
@@ -46,7 +45,6 @@ public class DialogActivity extends AppBaseActivity<ActivityDialogBinding, BaseV
         mDataBinding.recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mDataBinding.recyclerView.setAdapter(adapter);
 
-        AlertDialog alertDialog;
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

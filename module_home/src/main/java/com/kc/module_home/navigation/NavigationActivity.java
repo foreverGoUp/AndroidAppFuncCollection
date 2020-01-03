@@ -4,9 +4,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dovar.router_annotation.Route;
 import com.dovar.router_api.router.DRouter;
@@ -21,9 +23,6 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import io.reactivex.functions.Consumer;
 
 @Route(path = "home/navigation")
@@ -88,7 +87,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
 //                                            startActivityForResult(new Intent(NavigationActivity.this, CaptureActivity.class),10);
                                             DRouter.navigator("other/qrCode").navigateTo(NavigationActivity.this);
                                         }else {
-                                            ToastUtils.showShort("抱歉，需要启用相机权限才能使用");
+//                                            ToastUtils.showShort("抱歉，需要启用相机权限才能使用");
                                         }
                                     }
                                 });
@@ -110,7 +109,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10 && resultCode== Activity.RESULT_OK){
             String result = data.getStringExtra(Intents.Scan.RESULT);
-            ToastUtils.showShort(result);
+//            ToastUtils.showShort(result);
         }
     }
 
