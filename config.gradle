@@ -10,13 +10,13 @@ ext {
     //targetSdkVersion rootProject.ext.android.targetSdkVersion
     //versionCode rootProject.ext.android.versionCode
     //versionName rootProject.ext.android.versionName
-    //注意：编译版本（compileSdkVersion）>= 目标sdk版本（targetSdkVersion）
+    //注意：编译版本（compileSdkVersion）>= 目标sdk版本（targetSdkVersion）, 旧版support库的版本 <= compileSdkVersion.
     android = [
-            compileSdkVersion      : 27,
+            compileSdkVersion      : 28,
             buildToolsVersion      : "29.0.2",
             applicationId          : "com.kc.appfunccollection",
             minSdkVersion          : 19,//android 4.4
-            targetSdkVersion       : 27,//android 9.0
+            targetSdkVersion       : 28,//android 9.0
             versionCode            : 1,
             versionName            : "1.0.0"
     ]

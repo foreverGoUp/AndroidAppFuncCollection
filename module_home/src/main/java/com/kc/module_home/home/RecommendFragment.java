@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, BaseViewModel> {
 
     public RecommendFragment() {
-        mIsLog = true;
+        DEBUG = true;
     }
 
     public static RecommendFragment newInstance() {

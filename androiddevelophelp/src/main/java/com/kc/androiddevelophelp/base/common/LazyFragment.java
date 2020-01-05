@@ -22,23 +22,24 @@ public abstract class LazyFragment extends RootFragment {
     private boolean mIsPreparedForLazyLoad = false;//是否为懒加载的视图准备好了
     private boolean mIsLazyLoaded = false;//是否已经懒加载
     private boolean mIsOnResumeCallBacked = false;//是否第一次onResume()被回调过
+    public static boolean DEBUG = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (mIsLog) Log.e(TAG, hashCode() + " onCreate >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onCreate >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (mIsLog) Log.e(TAG, hashCode() + " onAttach >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onAttach >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if (mIsLog) Log.e(TAG, hashCode() + " onStart >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onStart >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     /**
@@ -47,7 +48,7 @@ public abstract class LazyFragment extends RootFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (mIsLog)
+        if (DEBUG)
             Log.e(TAG, hashCode() + " setUserVisibleHint >>>>>>>>>>>" + isVisibleToUser + ">>>>>>>>>>>");
         if (isVisibleToUser && mIsLazyLoaded) {
             onUserVisibleAfterLazyLoad();
@@ -58,7 +59,7 @@ public abstract class LazyFragment extends RootFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (mIsLog)
+        if (DEBUG)
             Log.e(TAG, hashCode() + " onCreateView >>>>>>>>>>>>>>>>>>>>>>");
         return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -67,7 +68,7 @@ public abstract class LazyFragment extends RootFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (mIsLog) Log.e(TAG, hashCode() + " onViewCreated >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onViewCreated >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     /**
@@ -76,7 +77,7 @@ public abstract class LazyFragment extends RootFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (mIsLog) Log.e(TAG, hashCode() + " onActivityCreated >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onActivityCreated >>>>>>>>>>>>>>>>>>>>>>");
         mIsPreparedForLazyLoad = true;
         lazyLoad();
     }
@@ -84,7 +85,7 @@ public abstract class LazyFragment extends RootFragment {
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        if (mIsLog) Log.e(TAG, hashCode() + " onViewStateRestored >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onViewStateRestored >>>>>>>>>>>>>>>>>>>>>>");
 
     }
 
@@ -110,7 +111,7 @@ public abstract class LazyFragment extends RootFragment {
      * 子类重写改方法执行第一次加载数据
      */
     protected void onLazyLoad() {
-        if (mIsLog) Log.e(TAG, hashCode() + " onLazyLoad -------------------------");
+        if (DEBUG) Log.e(TAG, hashCode() + " onLazyLoad -------------------------");
     }
 
     /**
@@ -118,7 +119,7 @@ public abstract class LazyFragment extends RootFragment {
      * 懒加载之后，业务若需要片段每次可见时刷新数据则重写该方法执行启动刷新
      */
     protected void onUserVisibleAfterLazyLoad() {
-        if (mIsLog)
+        if (DEBUG)
             Log.e(TAG, hashCode() + " onUserVisibleAfterLazyLoad -------------------------");
     }
 
@@ -127,7 +128,7 @@ public abstract class LazyFragment extends RootFragment {
      * 懒加载之后，业务若需要片段每次活动从后台返回前台并处于可见时刷新数据则重写该方法执行启动刷新，该方法与onUserVisibleAfterLazyLoad不会被同时回调。
      */
     protected void onResumeWithUserVisible() {
-        if (mIsLog) Log.e(TAG, hashCode() + " onResumeWithUserVisible -------------------------");
+        if (DEBUG) Log.e(TAG, hashCode() + " onResumeWithUserVisible -------------------------");
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -141,7 +142,7 @@ public abstract class LazyFragment extends RootFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (mIsLog) Log.e(TAG, hashCode() + " onResume >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onResume >>>>>>>>>>>>>>>>>>>>>>");
         if (mIsOnResumeCallBacked && getUserVisibleHint()) {
             onResumeWithUserVisible();
         } else {
@@ -155,39 +156,39 @@ public abstract class LazyFragment extends RootFragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (mIsLog) Log.e(TAG, hashCode() + " onSaveInstanceState >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onSaveInstanceState >>>>>>>>>>>>>>>>>>>>>>");
 
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (mIsLog) Log.e(TAG, hashCode() + " onPause >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onPause >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (mIsLog) Log.e(TAG, hashCode() + " onStop >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onStop >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mIsLog) Log.e(TAG, hashCode() + " onDestroyView >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onDestroyView >>>>>>>>>>>>>>>>>>>>>>");
 
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        if (mIsLog) Log.e(TAG, hashCode() + " onDetach >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onDetach >>>>>>>>>>>>>>>>>>>>>>");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mIsLog) Log.e(TAG, hashCode() + " onDestroy >>>>>>>>>>>>>>>>>>>>>>");
+        if (DEBUG) Log.e(TAG, hashCode() + " onDestroy >>>>>>>>>>>>>>>>>>>>>>");
 
     }
 }

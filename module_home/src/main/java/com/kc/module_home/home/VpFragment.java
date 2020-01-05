@@ -12,7 +12,7 @@ import com.kc.module_home.databinding.FragmentVpBinding;
 public class VpFragment extends AppBaseFragment<FragmentVpBinding, BaseViewModel> {
 
     public VpFragment() {
-        mIsLog = false;
+        DEBUG = false;
     }
 
     private int mIndex;

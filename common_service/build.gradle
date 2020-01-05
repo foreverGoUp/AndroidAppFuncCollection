@@ -59,6 +59,7 @@ dependencies {
 //     api rootProject.ext.dependencies["BRVAH-support"]
     api rootProject.ext.dependencies.SmartRefreshLayout
     api rootProject.ext.dependencies.SmartRefreshHeader
+    api rootProject.ext.dependencies.EasySwipeMenuLayout
 
     //权限请求
     api rootProject.ext.dependencies.rxpermissions
