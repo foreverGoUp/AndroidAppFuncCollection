@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.kc.androiddevelophelp.base.mvvm.BaseFragment;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.FragmentRecommendBinding;
 
 import java.util.ArrayList;
 
+import ckc.android.develophelp.lib.base.mvvm.BaseFragment;
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
+
 
 public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, BaseViewModel> {
 
     public RecommendFragment() {
-        DEBUG = true;
     }
 
     public static RecommendFragment newInstance() {
@@ -28,13 +28,13 @@ public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, Ba
 
 
     @Override
-    protected int onGetViewLayout() {
+    protected int onConfigViewLayout() {
         return R.layout.fragment_recommend;
     }
 
     @Override
-    protected void init(View view) {
-        super.init(view);
+    protected void OnInit(View view) {
+        super.OnInit(view);
         String[] titles = new String[10];
         for (int i = 0; i < 10; i++) {
             titles[i] = "标题"+i;
@@ -47,7 +47,7 @@ public class RecommendFragment extends BaseFragment<FragmentRecommendBinding, Ba
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

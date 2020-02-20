@@ -3,11 +3,11 @@ package com.kc.appfunccollection.ui.welcome;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.util.RxUtils;
 
 import java.util.concurrent.TimeUnit;
 
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;

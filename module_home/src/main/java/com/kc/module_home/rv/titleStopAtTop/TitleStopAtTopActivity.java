@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.common_service.helper.recycler_view.TitleItemDecoration;
 import com.kc.module_home.R;
@@ -16,17 +15,19 @@ import com.kc.module_home.databinding.ActivityTitleStopAtTopBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
+
 @Route(path = "rv/titleStopAtTop")
 public class TitleStopAtTopActivity extends AppBaseActivity<ActivityTitleStopAtTopBinding, BaseViewModel> {
 
 
     @Override
-    protected int onGetContentViewLayout() {
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_title_stop_at_top;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
         final List<Entity> data = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             if (i<3){
@@ -61,7 +62,7 @@ public class TitleStopAtTopActivity extends AppBaseActivity<ActivityTitleStopAtT
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

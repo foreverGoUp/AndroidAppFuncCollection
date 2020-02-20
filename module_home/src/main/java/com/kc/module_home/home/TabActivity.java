@@ -6,10 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
 import com.dovar.router_annotation.Route;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityTabBinding;
+
+import ckc.android.develophelp.lib.base.common.RootFragment;
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 
 @Route(path = "home/tab")
 public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewModel> {
@@ -18,21 +20,22 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
     private String[] mFragmentTags = new String[]{RecommendFragment.class.getSimpleName(), FocusFragment.class.getSimpleName(), FindFragment.class.getSimpleName()};
 
     @Override
-    protected boolean isUseStatusBarSpace() {
-        return true;
-    }
-
-    @Override
-    protected int onGetContentViewLayout() {
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_tab;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
+        RootFragment.DEBUG = true;
+
         initTabLayout();
         switchFragment(0);
     }
 
+    @Override
+    protected boolean onConfigStatusBarTransparent() {
+        return true;
+    }
 
     private void initTabLayout() {
         mDataBinding.tabLayout.getTabSelectedIndicator().setAlpha(0);
@@ -101,7 +104,7 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

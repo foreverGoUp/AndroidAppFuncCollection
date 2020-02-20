@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:orientation="vertical"
+    tools:context=".TestActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="方框验证码" />
+
+    <ckc.android.develophelp.lib.widget.SquareVerifyCodeView
+        android:id="@+id/square"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/sp_20"
+        android:textColor="@android:color/holo_red_light"
+        android:textStyle="italic"
+        app:svcv_square_number="4"
+        app:svcv_square_width="@dimen/dp_40"
+        app:svcv_square_interval="@dimen/dp_10"
+        app:svcv_square_selected_bg="@drawable/shape_verify_code_square_selected_bg"
+        app:svcv_square_unselected_bg="@drawable/shape_verify_code_square_unselected_bg" />
+</LinearLayout>

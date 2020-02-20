@@ -15,7 +15,7 @@ ext {
             compileSdkVersion      : 28,
             buildToolsVersion      : "29.0.2",
             applicationId          : "com.kc.appfunccollection",
-            minSdkVersion          : 19,//android 4.4
+            minSdkVersion          : 21,//android 5.0
             targetSdkVersion       : 28,//android 9.0
             versionCode            : 1,
             versionName            : "1.0.0"
@@ -42,8 +42,7 @@ ext {
     //注意：带”-“的名称必须以双引号包围，否则会报错。
     dependencies = [
             //我自己的库
-            //mvp架构依赖库
-            KcMvp                   : "com.github.foreverGoUp:KcMvp:1.0.1",
+            "AndroidDevelopHelp"    : "com.github.foreverGoUp:AndroidDevelopHelp:1.0.0",
 
             //android-support（compileSdkVersion 27-）
             "support-v4"            : "com.android.support:support-v4:${dependVersion.support}",

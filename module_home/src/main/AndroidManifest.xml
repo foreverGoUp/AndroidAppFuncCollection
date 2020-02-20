@@ -3,7 +3,8 @@
     package="com.kc.module_home">
 
     <application>
-        <activity android:name=".pagerAdapter.PagerAdapterTestActivity"></activity>
+        <activity android:name=".widget.SmallWidgetShowActivity"></activity>
+        <activity android:name=".pagerAdapter.PagerAdapterTestActivity" />
         <activity android:name=".other.DialogActivity" />
         <activity android:name=".other.QrCodeActivity" />
         <activity android:name=".rv.titleStopAtTop.TitleStopAtTopActivity" />

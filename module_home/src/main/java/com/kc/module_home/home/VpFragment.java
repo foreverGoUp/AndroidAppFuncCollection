@@ -3,16 +3,16 @@ package com.kc.module_home.home;
 import android.os.Bundle;
 import android.view.View;
 
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseFragment;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.FragmentVpBinding;
+
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 
 
 public class VpFragment extends AppBaseFragment<FragmentVpBinding, BaseViewModel> {
 
     public VpFragment() {
-        DEBUG = false;
     }
 
     private int mIndex;
@@ -26,13 +26,13 @@ public class VpFragment extends AppBaseFragment<FragmentVpBinding, BaseViewModel
     }
 
     @Override
-    protected int onGetViewLayout() {
+    protected int onConfigViewLayout() {
         return R.layout.fragment_vp;
     }
 
     @Override
-    protected void init(View view) {
-        super.init(view);
+    protected void OnInit(View view) {
+        super.OnInit(view);
         mIndex = getArguments().getInt("index");
         mDataBinding.tvContent.setText(String.valueOf(mIndex));
     }
@@ -44,7 +44,7 @@ public class VpFragment extends AppBaseFragment<FragmentVpBinding, BaseViewModel
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

@@ -20,12 +20,12 @@ public class MvvmRvAdapterActivity extends AppBaseActivity<ActivityMvvmRvAdapter
 
 
     @Override
-    protected int onGetContentViewLayout() {
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_mvvm_rv_adapter;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
         mViewModel = new ViewModel();
         mDataBinding.setVm(mViewModel);
 
@@ -50,7 +50,7 @@ public class MvvmRvAdapterActivity extends AppBaseActivity<ActivityMvvmRvAdapter
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

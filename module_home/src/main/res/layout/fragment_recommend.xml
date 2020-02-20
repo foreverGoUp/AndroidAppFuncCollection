@@ -8,25 +8,29 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_120"
-            android:background="@drawable/news_head"
-            android:fitsSystemWindows="true">
+            android:background="@drawable/news_head">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_60"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_scrollFlags="scroll|enterAlways|snap">
 
+                <com.kc.androiddevelophelp.immersive.StatusBarHeightView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:background="#80ff0000"
                     android:text="搜索栏" />
             </LinearLayout>
 
@@ -34,18 +38,17 @@
                 android:id="@+id/sliding_tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_60"
-                android:fitsSystemWindows="true"
                 app:tl_indicator_corner_radius="@dimen/dp_1_5"
                 app:tl_indicator_height="@dimen/dp_3"
                 app:tl_indicator_width="@dimen/dp_15"
                 app:tl_textSelectColor="@android:color/holo_green_light"
                 app:tl_textsize="@dimen/sp_20" />
-        </com.google.android.material.appbar.AppBarLayout>
+        </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </android.support.design.widget.CoordinatorLayout>
 </layout>

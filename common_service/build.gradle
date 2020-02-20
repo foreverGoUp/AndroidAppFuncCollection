@@ -29,11 +29,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //公共库
-    api project(path: ':androiddevelophelp')            //安卓开发帮助库
+
+    api rootProject.ext.dependencies["AndroidDevelopHelp"]
     //support库（compileSdkVersion 27-）
-    api rootProject.ext.dependencies["support-v4"]
-    api rootProject.ext.dependencies["appcompat-v7"]
+//    api rootProject.ext.dependencies["support-v4"]
+//    api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies.design
     api rootProject.ext.dependencies.recyclerview
     api rootProject.ext.dependencies.cardview

@@ -8,7 +8,8 @@ public class MySection extends SectionEntity<String> {
         super(isHeader, header);
     }
 
-    public MySection(String s) {
-        super(s);
+    public MySection(String title, String navigator) {
+        super(false, title);
+        t = navigator;
     }
 }

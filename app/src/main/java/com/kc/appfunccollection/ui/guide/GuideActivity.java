@@ -6,8 +6,6 @@ import android.widget.ImageView;
 
 import com.dovar.router_annotation.Route;
 import com.dovar.router_api.router.DRouter;
-import com.kc.androiddevelophelp.adapter.ViewPagerAdapter;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.appfunccollection.R;
 import com.kc.appfunccollection.databinding.ActivityGuideBinding;
 import com.kc.common_service.base.AppBaseActivity;
@@ -15,21 +13,19 @@ import com.kc.common_service.base.AppBaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import ckc.android.develophelp.lib.adapter.ViewPagerAdapter;
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
+
 @Route(path = "app/guide")
 public class GuideActivity extends AppBaseActivity<ActivityGuideBinding, BaseViewModel> {
 
     @Override
-    protected boolean isUseStatusBarSpace() {
-        return true;
-    }
-
-    @Override
-    protected int onGetContentViewLayout() {
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_guide;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
         initVp();
     }
 
@@ -49,6 +45,7 @@ public class GuideActivity extends AppBaseActivity<ActivityGuideBinding, BaseVie
                         finish();
                     }
                 });
+
             }
 
             data.add(imageView);
@@ -58,7 +55,7 @@ public class GuideActivity extends AppBaseActivity<ActivityGuideBinding, BaseVie
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

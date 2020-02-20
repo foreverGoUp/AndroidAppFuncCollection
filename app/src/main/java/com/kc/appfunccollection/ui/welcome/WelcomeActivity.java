@@ -10,12 +10,12 @@ import com.kc.common_service.base.AppBaseActivity;
 public class WelcomeActivity extends AppBaseActivity<ActivityWelcomeBinding, ViewModel> implements INavigator {
 
     @Override
-    protected int onGetContentViewLayout() {
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_welcome;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
 //        BarUtils.setStatusBarLightMode(this, true);
 
         mViewModel = new ViewModel(this);
@@ -32,7 +32,7 @@ public class WelcomeActivity extends AppBaseActivity<ActivityWelcomeBinding, Vie
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

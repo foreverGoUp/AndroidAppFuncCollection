@@ -8,7 +8,6 @@
 
     <LinearLayout
         android:id="@+id/llayout_aty_top"
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/holo_orange_light"
@@ -16,7 +15,6 @@
         tools:context=".home.TabActivity">
 
         <FrameLayout
-            android:fitsSystemWindows="true"
             android:id="@+id/frameLayout_frag_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"

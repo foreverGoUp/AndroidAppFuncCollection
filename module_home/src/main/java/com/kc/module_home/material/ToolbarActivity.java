@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.common_service.helper.recycler_view.DividerVerticalGridItemDecoration;
 import com.kc.common_service.util.RxUtils;
@@ -29,6 +28,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -36,12 +36,17 @@ import io.reactivex.functions.Consumer;
 public class ToolbarActivity extends AppBaseActivity<ActivityToolbarBinding, BaseViewModel> {
 
     @Override
-    protected int onGetContentViewLayout() {
+    protected boolean onConfigStatusBarTransparent() {
+        return true;
+    }
+
+    @Override
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_toolbar;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
         //toolbar
         setSupportActionBar(mDataBinding.toolbar);
         ActionBar actionBar=getSupportActionBar();
@@ -134,7 +139,7 @@ public class ToolbarActivity extends AppBaseActivity<ActivityToolbarBinding, Bas
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 }

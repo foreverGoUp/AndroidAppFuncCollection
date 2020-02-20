@@ -3,7 +3,8 @@ package com.kc.common_service;
 import android.app.Application;
 
 import com.dovar.router_api.router.DRouter;
-import com.kc.androiddevelophelp.util.CrashHandler;
+
+import ckc.android.develophelp.lib.util.CrashHandler;
 
 public class MyApp extends Application implements CrashHandler.IApp {
 

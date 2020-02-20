@@ -12,7 +12,6 @@ import android.view.animation.Interpolator;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseActivity;
 import com.kc.common_service.util.RandomUtils;
 import com.kc.common_service.util.RxUtils;
@@ -28,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -42,12 +42,12 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
     private List<String> styleTitles = new ArrayList<>();
 
     @Override
-    protected int onGetContentViewLayout() {
+    protected int onConfigContentViewLayout() {
         return R.layout.activity_recycler_view;
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
+    protected void onInit(Bundle savedInstanceState) {
         //rv refresh styles
         styleTitles.add("ClassicsHeader");
         styleTitles.add("BezierRadarHeader");//com.scwang.smartrefresh.layout.header.
@@ -208,7 +208,7 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 

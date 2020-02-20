@@ -29,6 +29,6 @@ public class SectionAdapter extends BaseSectionQuickAdapter<MySection, BaseViewH
 
     @Override
     protected void convert(@NonNull BaseViewHolder helper, MySection item) {
-        helper.setText(R.id.tv_item_content, item.t);
+        helper.setText(R.id.tv_item_content, item.header);
     }
 }

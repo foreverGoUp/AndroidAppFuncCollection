@@ -2,16 +2,16 @@ package com.kc.module_home.home;
 
 import android.os.Bundle;
 
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.base.AppBaseFragment;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.FragmentFocusBinding;
+
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 
 
 public class FocusFragment extends AppBaseFragment<FragmentFocusBinding, BaseViewModel> {
 
     public FocusFragment() {
-        DEBUG = true;
     }
 
     public static FocusFragment newInstance() {
@@ -23,12 +23,12 @@ public class FocusFragment extends AppBaseFragment<FragmentFocusBinding, BaseVie
     }
 
     @Override
-    protected int onGetViewLayout() {
+    protected int onConfigViewLayout() {
         return R.layout.fragment_focus;
     }
 
     @Override
-    protected void initViewModelAndBindDataBinding() {
+    protected void onConfigViewModelAndBindDataBinding() {
 
     }
 

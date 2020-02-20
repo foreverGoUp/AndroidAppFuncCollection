@@ -5,7 +5,6 @@ import android.databinding.ObservableArrayList;
 import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
 
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
 import com.kc.common_service.util.RandomUtils;
 import com.kc.common_service.util.RxUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -14,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 

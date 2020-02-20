@@ -1,21 +1,26 @@
 package com.kc.common_service.base;
 
 import android.databinding.ViewDataBinding;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 
-import com.kc.androiddevelophelp.base.mvvm.BaseActivity;
-import com.kc.androiddevelophelp.base.mvvm.BaseViewModel;
+import ckc.android.develophelp.lib.base.mvvm.BaseActivity;
+import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
+
 
 public abstract class AppBaseActivity<DB extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity<DB, VM> {
 
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        if (isUseStatusBarSpace()) BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
-        super.onCreate(savedInstanceState);
+    protected boolean onConfigRootViewFitsSystemWindows() {
+        return false;
     }
 
-    protected boolean isUseStatusBarSpace() {
+    @Override
+    protected boolean onConfigStatusBarTransparent() {
+        return false;
+    }
+
+    @Override
+    protected boolean onConfigStatusBarDarkTheme() {
         return false;
     }
 }
