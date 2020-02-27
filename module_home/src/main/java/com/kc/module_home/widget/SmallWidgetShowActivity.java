@@ -33,6 +33,26 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
 
     @Override
     protected void onInit(Bundle savedInstanceState) {
+        mDataBinding.csmTimeAxisLayout.getTimeAxisView().startAutoForward();
+
+
+        mDataBinding.bt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String input = mDataBinding.et3.getText().toString();
+                if (TextUtils.isEmpty(input)) {
+                    return;
+                }
+                int num = Integer.parseInt(input);
+                if (num >= 0 && num <= 100) {
+                    mDataBinding.csmColumnProgress.setProgress(num);
+                }
+            }
+        });
+
+
+
+
         mDataBinding.squareVerifyCodeView.setOnVerifyCodeListener(new SquareVerifyCodeView.OnVerifyCodeListener() {
             @Override
             public void onVerifyCodeInputComplete(final String code) {
@@ -73,8 +93,13 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
                 if (TextUtils.isEmpty(input)) {
                     return;
                 }
-                int num = Integer.parseInt(input);
-                helper.scrollToPosition(num);
+//                int num = Integer.parseInt(input);
+                Float num = Float.parseFloat(input);
+
+//                helper.scrollToPosition(num);
+//                mDataBinding.rv1.smoothScrollToPosition(num);
+//                mDataBinding.rv1.setFlingMaxVelocity(num);
+                mDataBinding.rv1.setFlingRatio(num);
             }
         });
 

@@ -1,17 +1,19 @@
 package com.kc.module_home.widget.horizontalScrollScaleGallery;
 
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by jameson on 9/1/16.
+ * Created by ckc on 200224.
  * <p>
  * 功能：
- * 条目竖直方向内容从屏幕左边或右边移动到屏幕中间会逐渐放大，当条目完全到达屏幕中间时为原尺寸
+ * -条目竖直方向内容从屏幕左边或右边移动到屏幕中间会逐渐放大，当条目完全到达屏幕中间时为原尺寸;
  * 条目竖直方向内容从屏幕中间移动到屏幕左边或右边会逐渐缩小，当条目完全到达屏幕左边或右边时为最小缩放尺寸。
+ * -个性化配置
+ * -高性能快速跳转到指定位置的方法scrollToPosition()
+ * -获取当前显示位置的方法getCurrentItemPos()
  * <p>
  * <p>
  * 用法：
@@ -21,18 +23,18 @@ import android.view.ViewGroup;
  */
 public class HorizontalScrollScaleGalleryHelper {
 
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
     private final String TAG = this.getClass().getSimpleName();
 
     RecyclerView mRecyclerView;
-    int mIntervalOfItemToScreen;//条目两边距离屏幕的大小
+    int mIntervalOfItemToScreen;//条CsmColumnProgress.java目两边距离屏幕的大小
     int mIntervalOfItem;//条目之间的间隔
     float mScaleRatio;//最小条目Y方向的缩放值
     int mItemWidth; // 条目宽度
 
     private ScaleHelper mScaleHelper = new ScaleHelper();
     private boolean mAttachRv;
-    private boolean mIsAddedOnScrollListener = false;
+//    private boolean mIsAddedOnScrollListener = false;
 
     public HorizontalScrollScaleGalleryHelper(RecyclerView recyclerView, int currentItemPos, int intervalOfItemToScreen, int intervalOfItem, float scaleRatio) {
         mRecyclerView = recyclerView;
@@ -105,23 +107,23 @@ public class HorizontalScrollScaleGalleryHelper {
         });
     }
 
-    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                Log.e(TAG, "监听到校准滚动结束");
-            } else {
-                Log.e(TAG, "监听到校准滚动中：" + newState);
-            }
-        }
-
-        @Override
-        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            Log.e(TAG, "校准滚动：dx=" + dx);
-        }
-    };
+//    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
+//        @Override
+//        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+//            super.onScrollStateChanged(recyclerView, newState);
+//            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                Log.e(TAG, "监听到校准滚动结束");
+//            } else {
+//                Log.e(TAG, "监听到校准滚动中：" + newState);
+//            }
+//        }
+//
+//        @Override
+//        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//            super.onScrolled(recyclerView, dx, dy);
+//            Log.e(TAG, "校准滚动：dx=" + dx);
+//        }
+//    };
 
     /**
      * @param pos 值为-1
@@ -173,6 +175,9 @@ public class HorizontalScrollScaleGalleryHelper {
         }
     }
 
+    /**
+     * 某些情况下会返回-1，例如列表还在滑动状态。
+     */
     public int getCurrentItemPos() {
         return mScaleHelper.getCurrentItemPos();
     }

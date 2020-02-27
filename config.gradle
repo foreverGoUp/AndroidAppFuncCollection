@@ -42,7 +42,7 @@ ext {
     //注意：带”-“的名称必须以双引号包围，否则会报错。
     dependencies = [
             //我自己的库
-            "AndroidDevelopHelp"    : "com.github.foreverGoUp:AndroidDevelopHelp:1.0.0",
+            "AndroidDevelopHelp"    : "com.github.foreverGoUp:AndroidDevelopHelp:master-SNAPSHOT",
 
             //android-support（compileSdkVersion 27-）
             "support-v4"            : "com.android.support:support-v4:${dependVersion.support}",

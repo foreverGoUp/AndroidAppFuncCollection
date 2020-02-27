@@ -38,6 +38,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
     private final String P8 = "对话框";
     private final String P9 = "多片段页面";
     private final String P30 = "小自定义控件合集";
+    private final String P31 = "视频浏览";
 
     @Override
     protected int onConfigContentViewLayout() {
@@ -64,6 +65,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
         data.add(new MySection(P9, null));
         data.add(new MySection(true, "自定义控件"));
         data.add(new MySection(P30, "widget/small"));
+        data.add(new MySection(P31, "widget/videoBrowse"));
 
         SectionAdapter adapter = new SectionAdapter(R.layout.item_navigation, R.layout.head_item_navigation, data);
         mDataBinding.recyclerView.setAdapter(adapter);

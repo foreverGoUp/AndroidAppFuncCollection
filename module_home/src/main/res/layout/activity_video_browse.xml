@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".widget.VideoBrowseActivity">
+
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入>=0数字"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/bt"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="wrap_content"
+            android:text="移动到指定位置" />
+
+        <com.kc.module_home.widget.horizontalScrollScaleGallery.FlingSpeedRecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

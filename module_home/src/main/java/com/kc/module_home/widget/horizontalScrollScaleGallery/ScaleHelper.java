@@ -26,10 +26,12 @@ class ScaleHelper {
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
             if (newState == RecyclerView.SCROLL_STATE_IDLE) {//滚动停止
-                if (HorizontalScrollScaleGalleryHelper.DEBUG) Log.e(TAG, "滚动停止");
+                if (HorizontalScrollScaleGalleryHelper.DEBUG)
+                    Log.e(TAG, "onScrollStateChanged 滚动停止");
                 onScrollStop();
             } else {//滚动中,或手指滑动停止且未松开
-                if (HorizontalScrollScaleGalleryHelper.DEBUG) Log.e(TAG, "滚动中：" + newState);
+                if (HorizontalScrollScaleGalleryHelper.DEBUG)
+                    Log.e(TAG, "onScrollStateChanged 滚动中：" + newState);
             }
         }
 
