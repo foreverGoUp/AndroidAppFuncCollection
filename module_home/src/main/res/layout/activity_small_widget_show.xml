@@ -21,10 +21,24 @@
                 android:text="时间轴"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:text="00:00:00"
+                android:background="@android:drawable/toast_frame" />
+
             <com.kc.module_home.widget.timeAxis.CsmTimeAxisLayout
                 android:id="@+id/csmTimeAxisLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_200" />
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/dp_300"
+                android:layout_height="@dimen/dp_150"
+                android:layout_marginTop="@dimen/dp_10" />
 
             <TextView
                 android:layout_width="wrap_content"

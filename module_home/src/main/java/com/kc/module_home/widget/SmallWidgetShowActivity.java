@@ -15,11 +15,13 @@ import com.kc.common_service.base.AppBaseActivity;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivitySmallWidgetShowBinding;
 import com.kc.module_home.widget.horizontalScrollScaleGallery.HorizontalScrollScaleGalleryHelper;
+import com.kc.module_home.widget.timeAxis.CsmTimeAxisView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
+import ckc.android.develophelp.lib.util.TimeUtils;
 import ckc.android.develophelp.lib.util.ToastUtils;
 import ckc.android.develophelp.lib.widget.SquareVerifyCodeView;
 
@@ -33,7 +35,27 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
 
     @Override
     protected void onInit(Bundle savedInstanceState) {
-        mDataBinding.csmTimeAxisLayout.getTimeAxisView().startAutoForward();
+        mDataBinding.csmTimeAxisLayout.getTimeAxisView().setListener(new CsmTimeAxisView.OnCsmTimeAxisListener() {
+            @Override
+            public void onTimeAxisMoveStart() {
+
+            }
+
+            @Override
+            public void onTimeAxisMove(long timeMilli) {
+                mDataBinding.tv3.setText(TimeUtils.getDefaultTime(timeMilli));
+            }
+
+            @Override
+            public void onTimeAxisStop(long timeMilli) {
+                mDataBinding.tv3.setText(TimeUtils.getDefaultTime(timeMilli));
+            }
+        });
+
+//        mDataBinding.csmTimeAxisLayout.getTimeAxisView().startAutoForward();
+
+
+
 
 
         mDataBinding.bt4.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +69,8 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
                 if (num >= 0 && num <= 100) {
                     mDataBinding.csmColumnProgress.setProgress(num);
                 }
+
+//                mDataBinding.csmTimeAxisLayout.getTimeAxisView().enableDraggable(false);
             }
         });
 
