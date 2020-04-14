@@ -38,7 +38,7 @@ public class TabActivity extends AppBaseActivity<ActivityTabBinding, BaseViewMod
     }
 
     private void initTabLayout() {
-        mDataBinding.tabLayout.getTabSelectedIndicator().setAlpha(0);
+//        mDataBinding.tabLayout.getTabSelectedIndicator().setAlpha(0);
         mDataBinding.tabLayout.addTab(mDataBinding.tabLayout.newTab().setCustomView(R.layout.home_tab_recommend), true);
         mDataBinding.tabLayout.addTab(mDataBinding.tabLayout.newTab().setCustomView(R.layout.home_tab_focus));
         mDataBinding.tabLayout.addTab(mDataBinding.tabLayout.newTab().setCustomView(R.layout.home_tab_find));

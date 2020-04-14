@@ -19,6 +19,35 @@ import android.view.ViewGroup;
  * 用法：
  * -实例化时传入相应的个性化配置
  * -在RecyclerView的adapter中对应方法中调用onCreateViewHolder, onBindViewHolder
+ *  如：private class HorizontalScrollScaleGalleryAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+ *
+ *         HorizontalScrollScaleGalleryHelper mHelper;
+ *
+ *         public HorizontalScrollScaleGalleryAdapter(HorizontalScrollScaleGalleryHelper helper, @Nullable List<String> data) {
+ *             super(R.layout.item_horizontal_scroll_scale_gallery, data);
+ *             mHelper = helper;
+ *         }
+ *
+ *         @NonNull
+ *         @Override
+ *         public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+ *             BaseViewHolder baseViewHolder = super.onCreateViewHolder(parent, viewType);
+ *             mHelper.onCreateViewHolder(parent, baseViewHolder.itemView, baseViewHolder.getLayoutPosition());
+ *             return baseViewHolder;
+ *         }
+ *
+ *         @Override
+ *         public void onBindViewHolder(BaseViewHolder holder, int position) {
+ *             super.onBindViewHolder(holder, position);
+ *             mHelper.onBindViewHolder(holder.itemView, position, getItemCount());
+ *         }
+ *
+ *
+ *         @Override
+ *         protected void convert(@NonNull BaseViewHolder helper, String item) {
+ *             helper.setText(R.id.tv_content, item);
+ *         }
+ *     }
  * -使用该类中提供的scrollToPosition方法高性能跳转到指定条目。若想要缓慢滚动到指定位置，可直接使用RecyclerView的方法。
  */
 public class HorizontalScrollScaleGalleryHelper {

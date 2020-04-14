@@ -31,7 +31,7 @@ import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
-@Route(path = "rv/refresh")
+@Route(path = "rv/refreshData")
 public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBinding, BaseViewModel> {
 
     BaseQuickAdapter<String, BaseViewHolder> mAdapter;
@@ -48,7 +48,7 @@ public class RecyclerViewActivity extends AppBaseActivity<ActivityRecyclerViewBi
 
     @Override
     protected void onInit(Bundle savedInstanceState) {
-        //rv refresh styles
+        //rv refreshData styles
         styleTitles.add("ClassicsHeader");
         styleTitles.add("BezierRadarHeader");//com.scwang.smartrefresh.layout.header.
         styleTitles.add("BezierCircleHeader");

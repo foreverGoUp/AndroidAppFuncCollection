@@ -25,6 +25,18 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by ckc on 2017/9/1.
+ * 时间轴控件
+ *
+ * 功能:
+ * 时间范围：00：00-23：59：59
+ * 小间隔：10分钟，中间隔：30分钟，大间隔：1小时
+ * 手指横向滑动指定播放时间
+ * 当播放时间未找到录像文件，则自动播放下一个录像文件，当到最后一个录像文件播放完成后，自动播放第一个录像文件。
+ * 调用startAutoForward和stopAutoForward方法可开始/停止按1s前进。
+ * setData方法设置录像文件列表
+ * setListener方法可监听时间改变
+ * setCurrentTime方法改变开始播放的时间
+ * enableDraggable方法控制是否可以手指滑动
  */
 
 public class CsmTimeAxisView extends View {

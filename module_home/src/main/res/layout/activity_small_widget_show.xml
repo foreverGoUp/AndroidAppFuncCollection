@@ -117,7 +117,7 @@
                 android:text="水平滚动缩放相册"
                 android:textStyle="bold" />
 
-            <com.kc.module_home.widget.horizontalScrollScaleGallery.FlingSpeedRecyclerView
+            <com.kc.module_home.widget.FlingSpeedRecyclerView
                 android:id="@+id/rv1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_200" />

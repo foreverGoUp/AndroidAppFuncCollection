@@ -2,7 +2,6 @@ package com.kc.module_home.widget;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearSnapHelper;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -36,23 +35,23 @@ public class VideoBrowseActivity extends AppBaseActivity<ActivityVideoBrowseBind
                 if (TextUtils.isEmpty(input)) {
                     return;
                 }
-                int num = Integer.parseInt(input);
-//                Float num = Float.parseFloat(input);
+//                int num = Integer.parseInt(input);
+                Float num = Float.parseFloat(input);
 
-//                helper.scrollToPosition(num);
-                mDataBinding.rv.smoothScrollToPosition(num);
-//                mDataBinding.rv1.setFlingMaxVelocity(num);
+//                mDataBinding.rv.smoothScrollToPosition(num);
+                mDataBinding.rv.setFlingRatio(num);
             }
         });
 
 
         //提供调用smoothScrollToPosition方法跳转到指定位置时最后item在屏幕中心
         VideoBrowseLinearLayoutManager linearLayoutManager = new VideoBrowseLinearLayoutManager(this);
-        //若使用该LinearLayoutManager和LinearSnapHelper搭配使用，会造成最后有一丝明显卡顿的效果
+        linearLayoutManager.setItemStopMidWhenSlideByFinger(mDataBinding.rv);
+        //若使用该LinearLayoutManager和LinearSnapHelper搭配使用，会造成smoothScrollToPosition最后有一丝明显卡顿的效果
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+//        LinearSnapHelper snapHelper = new LinearSnapHelper();
+//        snapHelper.attachToRecyclerView(mDataBinding.rv);
         mDataBinding.rv.setLayoutManager(linearLayoutManager);
-
-//        mDataBinding.rv.setFlingRatio(0.5f);
 
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -65,9 +64,6 @@ public class VideoBrowseActivity extends AppBaseActivity<ActivityVideoBrowseBind
             }
         };
         mDataBinding.rv.setAdapter(adapter);
-        //提供手指滑动列表停止时item在屏幕中心
-        LinearSnapHelper snapHelper = new LinearSnapHelper();
-        snapHelper.attachToRecyclerView(mDataBinding.rv);
     }
 
     @Override

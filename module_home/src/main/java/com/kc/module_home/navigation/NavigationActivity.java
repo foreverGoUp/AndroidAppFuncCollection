@@ -39,6 +39,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
     private final String P9 = "多片段页面";
     private final String P30 = "小自定义控件合集";
     private final String P31 = "视频浏览";
+    private final String P32 = "房间设备状态控件";
 
     @Override
     protected int onConfigContentViewLayout() {
@@ -56,7 +57,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
         data.add(new MySection(P2, "home/news_detail"));
         data.add(new MySection(P3, "home/toolbar"));
         data.add(new MySection(true, "RecyclerView"));
-        data.add(new MySection(P4, "rv/refresh"));
+        data.add(new MySection(P4, "rv/refreshData"));
         data.add(new MySection(P5, "rv/mvvmAdapter"));
         data.add(new MySection(P6, "rv/titleStopAtTop"));
         data.add(new MySection(true, "其他"));
@@ -66,6 +67,7 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
         data.add(new MySection(true, "自定义控件"));
         data.add(new MySection(P30, "widget/small"));
         data.add(new MySection(P31, "widget/videoBrowse"));
+        data.add(new MySection(P32, "widget/roomDeviceState"));
 
         SectionAdapter adapter = new SectionAdapter(R.layout.item_navigation, R.layout.head_item_navigation, data);
         mDataBinding.recyclerView.setAdapter(adapter);
@@ -101,7 +103,6 @@ public class NavigationActivity extends AppBaseActivity<ActivityNavigationBindin
                 }
             }
         });
-
     }
 
     @Override

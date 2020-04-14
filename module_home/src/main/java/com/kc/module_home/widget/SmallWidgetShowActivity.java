@@ -35,6 +35,7 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
 
     @Override
     protected void onInit(Bundle savedInstanceState) {
+        //csmTimeAxisLayout
         mDataBinding.csmTimeAxisLayout.getTimeAxisView().setListener(new CsmTimeAxisView.OnCsmTimeAxisListener() {
             @Override
             public void onTimeAxisMoveStart() {
@@ -55,9 +56,7 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
 //        mDataBinding.csmTimeAxisLayout.getTimeAxisView().startAutoForward();
 
 
-
-
-
+        //csmColumnProgress
         mDataBinding.bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,8 +74,7 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
         });
 
 
-
-
+        //squareVerifyCodeView
         mDataBinding.squareVerifyCodeView.setOnVerifyCodeListener(new SquareVerifyCodeView.OnVerifyCodeListener() {
             @Override
             public void onVerifyCodeInputComplete(final String code) {
@@ -84,7 +82,7 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
             }
         });
 
-
+        //annularEnergyView
         mDataBinding.bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +97,7 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
             }
         });
 
-
+        //HorizontalScrollScaleGalleryHelper
         mDataBinding.rv1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         List<String> data = new ArrayList<>();
@@ -117,13 +115,13 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
                 if (TextUtils.isEmpty(input)) {
                     return;
                 }
-//                int num = Integer.parseInt(input);
-                Float num = Float.parseFloat(input);
+                int num = Integer.parseInt(input);
+//                Float num = Float.parseFloat(input);
 
-//                helper.scrollToPosition(num);
+                helper.scrollToPosition(num);
 //                mDataBinding.rv1.smoothScrollToPosition(num);
 //                mDataBinding.rv1.setFlingMaxVelocity(num);
-                mDataBinding.rv1.setFlingRatio(num);
+//                mDataBinding.rv1.setFlingRatio(num);
             }
         });
 
@@ -141,6 +139,7 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
 
     }
 
+    //HorizontalScrollScaleGalleryHelper
     private class HorizontalScrollScaleGalleryAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
         HorizontalScrollScaleGalleryHelper mHelper;

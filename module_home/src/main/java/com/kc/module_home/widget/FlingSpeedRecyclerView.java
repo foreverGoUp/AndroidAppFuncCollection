@@ -1,4 +1,4 @@
-package com.kc.module_home.widget.horizontalScrollScaleGallery;
+package com.kc.module_home.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -7,15 +7,19 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 /**
- * 控制fling速度的RecyclerView
+ * 可控制滑动惯性（fling）速度的RecyclerView
  * <p>
- * Created by jameson on 9/1/16.
+ * Created by ckc on 200414.
+ *
+ * 功能：
+ * setFlingRatio
  */
 public class FlingSpeedRecyclerView extends RecyclerView {
 
+    public static boolean DEBUG = false;
     private final String TAG = this.getClass().getSimpleName();
-    public static boolean DEBUG = true;
-    private float mFlingRatio = 0.5f; // 惯性滑动比例
+
+    private float mFlingRatio = 1f; // 惯性滑动比例
     private int mFlingMaxVelocity = 2000; // 最大顺时滑动速度
 
     public FlingSpeedRecyclerView(Context context) {
@@ -49,6 +53,9 @@ public class FlingSpeedRecyclerView extends RecyclerView {
         }
     }
 
+    /**
+     * @param flingRatio 和滚动速度相乘。
+     */
     public void setFlingRatio(float flingRatio) {
         mFlingRatio = flingRatio;
     }

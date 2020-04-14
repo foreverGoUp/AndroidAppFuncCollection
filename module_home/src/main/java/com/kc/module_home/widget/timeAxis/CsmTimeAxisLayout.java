@@ -10,6 +10,49 @@ import android.widget.RelativeLayout;
 
 /**
  * Created by Administrator on 2017/9/2.
+ * 时间轴控件
+ * 该控件主要实现中间红线和时间轴控件（CsmTimeAxisView）的布局位置。
+ *
+ * 功能：
+ * 中间红线和时间轴控件（CsmTimeAxisView）的布局位置。
+ *
+ * 使用：
+ * 直接在xml中布局，tv3显示当前时间。
+ *              <TextView
+ *                 android:id="@+id/tv3"
+ *                 android:layout_width="wrap_content"
+ *                 android:layout_height="wrap_content"
+ *                 android:paddingLeft="@dimen/dp_5"
+ *                 android:paddingRight="@dimen/dp_5"
+ *                 android:layout_gravity="center_horizontal"
+ *                 android:gravity="center"
+ *                 android:textColor="@android:color/white"
+ *                 android:text="00:00:00"
+ *                 android:background="@android:drawable/toast_frame" />
+ *
+ *             <com.kc.module_home.widget.timeAxis.CsmTimeAxisLayout
+ *                 android:id="@+id/csmTimeAxisLayout"
+ *                 android:layout_gravity="center_horizontal"
+ *                 android:layout_width="@dimen/dp_300"
+ *                 android:layout_height="@dimen/dp_150"
+ *                 android:layout_marginTop="@dimen/dp_10" />
+ * java:
+ *          mDataBinding.csmTimeAxisLayout.getTimeAxisView().setListener(new CsmTimeAxisView.OnCsmTimeAxisListener() {
+ *             @Override
+ *             public void onTimeAxisMoveStart() {
+ *
+ *             }
+ *
+ *             @Override
+ *             public void onTimeAxisMove(long timeMilli) {
+ *                 mDataBinding.tv3.setText(TimeUtils.getDefaultTime(timeMilli));
+ *             }
+ *
+ *             @Override
+ *             public void onTimeAxisStop(long timeMilli) {
+ *                 mDataBinding.tv3.setText(TimeUtils.getDefaultTime(timeMilli));
+ *             }
+ *         });
  */
 //TODO 总结本次自定义经验
 public class CsmTimeAxisLayout extends RelativeLayout {

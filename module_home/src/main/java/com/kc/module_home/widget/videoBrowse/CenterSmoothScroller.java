@@ -3,7 +3,7 @@ package com.kc.module_home.widget.videoBrowse;
 import android.content.Context;
 import android.support.v7.widget.LinearSmoothScroller;
 
-public class CenterSmoothScroller extends LinearSmoothScroller {
+class CenterSmoothScroller extends LinearSmoothScroller {
 
     public CenterSmoothScroller(Context context) {
         super(context);
