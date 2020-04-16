@@ -4,13 +4,13 @@ import android.os.Bundle;
 
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.base.AppBaseActivity;
+import com.kc.common_service.widget.roomDeviceStateView.bean.DeviceList;
+import com.kc.common_service.widget.roomDeviceStateView.bean.DeviceType;
+import com.kc.common_service.widget.roomDeviceStateView.bean.RoomInfo;
+import com.kc.common_service.widget.roomDeviceStateView.tool.API;
+import com.kc.common_service.widget.roomDeviceStateView.tool.AppConstant;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityRoomDeviceStateViewBinding;
-import com.kc.module_home.widget.roomDeviceStateView.bean.DeviceList;
-import com.kc.module_home.widget.roomDeviceStateView.bean.DeviceType;
-import com.kc.module_home.widget.roomDeviceStateView.bean.RoomInfo;
-import com.kc.module_home.widget.roomDeviceStateView.tool.API;
-import com.kc.module_home.widget.roomDeviceStateView.tool.AppConstant;
 
 import java.util.ArrayList;
 import java.util.List;

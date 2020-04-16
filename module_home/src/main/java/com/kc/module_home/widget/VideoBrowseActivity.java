@@ -9,9 +9,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.base.AppBaseActivity;
+import com.kc.common_service.widget.videoBrowse.VideoBrowseLinearLayoutManager;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityVideoBrowseBinding;
-import com.kc.module_home.widget.videoBrowse.VideoBrowseLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;

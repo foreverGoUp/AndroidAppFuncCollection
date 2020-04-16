@@ -3,9 +3,9 @@
     package="com.kc.module_home">
 
     <application>
-        <activity android:name=".widget.RoomDeviceStateViewActivity"></activity>
-        <activity android:name=".widget.VideoBrowseActivity" />
-        <activity android:name=".widget.SmallWidgetShowActivity" />
+        <activity android:name="com.kc.module_home.widget.RoomDeviceStateViewActivity"></activity>
+        <activity android:name="com.kc.module_home.widget.VideoBrowseActivity" />
+        <activity android:name="com.kc.module_home.widget.SmallWidgetShowActivity" />
         <activity android:name=".pagerAdapter.PagerAdapterTestActivity" />
         <activity android:name=".other.DialogActivity" />
         <activity android:name=".other.QrCodeActivity" />

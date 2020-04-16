@@ -12,10 +12,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.base.AppBaseActivity;
+import com.kc.common_service.widget.horizontalScrollScaleGallery.HorizontalScrollScaleGalleryHelper;
+import com.kc.common_service.widget.timeAxis.CsmTimeAxisView;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivitySmallWidgetShowBinding;
-import com.kc.module_home.widget.horizontalScrollScaleGallery.HorizontalScrollScaleGalleryHelper;
-import com.kc.module_home.widget.timeAxis.CsmTimeAxisView;
 
 import java.util.ArrayList;
 import java.util.List;

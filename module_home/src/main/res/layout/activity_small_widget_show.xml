@@ -33,7 +33,7 @@
                 android:text="00:00:00"
                 android:background="@android:drawable/toast_frame" />
 
-            <com.kc.module_home.widget.timeAxis.CsmTimeAxisLayout
+            <com.kc.common_service.widget.timeAxis.CsmTimeAxisLayout
                 android:id="@+id/csmTimeAxisLayout"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="@dimen/dp_300"
@@ -46,7 +46,7 @@
                 android:text="柱状进度控件"
                 android:textStyle="bold" />
 
-            <com.kc.module_home.widget.CsmColumnProgress
+            <com.kc.common_service.widget.CsmColumnProgress
                 android:id="@+id/csmColumnProgress"
                 android:layout_width="@dimen/dp_50"
                 android:layout_height="@dimen/dp_300" />
@@ -92,7 +92,7 @@
                 android:text="环形能量控件"
                 android:textStyle="bold" />
 
-            <com.kc.module_home.widget.AnnularEnergyView
+            <com.kc.common_service.widget.AnnularEnergyView
                 android:id="@+id/annularEnergyView"
                 android:layout_width="@dimen/dp_150"
                 android:layout_height="@dimen/dp_150"
@@ -117,7 +117,7 @@
                 android:text="水平滚动缩放相册"
                 android:textStyle="bold" />
 
-            <com.kc.module_home.widget.FlingSpeedRecyclerView
+            <com.kc.common_service.widget.FlingSpeedRecyclerView
                 android:id="@+id/rv1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_200" />

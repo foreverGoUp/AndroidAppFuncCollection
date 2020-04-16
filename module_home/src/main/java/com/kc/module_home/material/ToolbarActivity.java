@@ -18,8 +18,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.base.AppBaseActivity;
-import com.kc.common_service.helper.recycler_view.DividerVerticalGridItemDecoration;
 import com.kc.common_service.util.RxUtils;
+import com.kc.common_service.widget.rv.DividerVerticalGridItemDecoration;
 import com.kc.module_home.R;
 import com.kc.module_home.databinding.ActivityToolbarBinding;
 

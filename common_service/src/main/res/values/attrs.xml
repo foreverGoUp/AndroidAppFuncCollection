@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CsmRadarView">
+        <attr name="textColor" format="color" />
+        <attr name="pressTextColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="scoreLineColor" format="color" />
+        <attr name="radarLineColor" format="color" />
+        <attr name="defaultScore" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CsmSpiderWebView">
+        <attr name="textColor1" format="color" />
+        <attr name="pressTextColor1" format="color" />
+        <attr name="textSize1" format="dimension" />
+        <attr name="scoreLineColor1" format="color" />
+        <attr name="radarLineColor1" format="color" />
+        <attr name="defaultScore1" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientColorTextView">
+        <attr name="startColor" format="color|reference" />
+        <attr name="endColor" format="color|reference" />
+    </declare-styleable>
+</resources>
