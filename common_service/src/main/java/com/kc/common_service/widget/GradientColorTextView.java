@@ -1,4 +1,4 @@
-package com.kc.module_home.widget;
+package com.kc.common_service.widget;
 
 
 import android.content.Context;
@@ -13,12 +13,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import com.kc.module_home.R;
+import com.kc.common_service.R;
 
 /**
  * @author ckc
  * @date 2018/11/7 9:31
- * 说明：
+ * 文本颜色渐变的TextView
  */
 public class GradientColorTextView extends AppCompatTextView {
 
