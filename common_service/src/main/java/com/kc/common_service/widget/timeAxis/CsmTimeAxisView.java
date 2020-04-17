@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,16 +44,16 @@ import io.reactivex.schedulers.Schedulers;
 public class CsmTimeAxisView extends View {
 
     private static final String TAG = "CsmTimeAxis";
-    private float mParentWidth;
+    private float mParentGiveWidth = -1;
 
-    private float mOneSecondWidth;
-    private int mIntervalMinutes;
-    private int mTimeTextMarginTop;
-    private int mTimeTextSize;
+    private float mOneSecondWidth = 0.08f;
+    private final int mIntervalMinutes = 10;
+    private int mTimeTextMarginTop = 10;
+    private int mTimeTextSize = 26;
 
     private float mIntervalWidth;
 
-    private Paint mNormalMarkPaint, mNormalTimeMarkPaint, mDataMarkPaint;
+    private Paint mMarkLinePaint, mTimeTextPaint, mDataMarkPaint;
 
     private OnCsmTimeAxisListener mListener;
 
@@ -62,43 +64,41 @@ public class CsmTimeAxisView extends View {
 
     private Date mCurrentDate;
 
-    private List<RecordFile> mTestDatas;
-    private List<RecordFile> mDatas;
+    private List<RecordFile> mTestData;
+    private List<RecordFile> mData;
 
     private Disposable mAutoForwardDisposable;
 
-    private float mMarkLineAreaHeight;
     //
     private boolean mEnableDraggable = true;
     //
     private boolean mIsMoving = false;
 
-    public CsmTimeAxisView(Context context, CsmTimeAxisLayout csmTimeAxisLayout) {
-        super(context);
-        init(csmTimeAxisLayout);
+    public CsmTimeAxisView(Context context) {
+        this(context, null);
     }
 
-    private void init(CsmTimeAxisLayout csmTimeAxisLayout) {
-        mOneSecondWidth = csmTimeAxisLayout.mOneSecondWidth;
-        mIntervalMinutes = csmTimeAxisLayout.mIntervalMinutes;
-        mTimeTextMarginTop = csmTimeAxisLayout.mTimeTextMarginTop;
-        mTimeTextSize = csmTimeAxisLayout.mTimeTextSize;
+    public CsmTimeAxisView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
 
+    private void init() {
         mIntervalWidth = mIntervalMinutes * 60 * mOneSecondWidth;
-        
-        mNormalMarkPaint = new Paint();
-        mNormalMarkPaint.setAntiAlias(true);
-        mNormalMarkPaint.setStyle(Paint.Style.STROKE);
-        mNormalMarkPaint.setColor(Color.GRAY);
-        mNormalMarkPaint.setStrokeWidth(1);
 
-        mNormalTimeMarkPaint = new Paint();
-        mNormalTimeMarkPaint.setAntiAlias(true);
-        mNormalTimeMarkPaint.setStyle(Paint.Style.FILL);
-        mNormalTimeMarkPaint.setColor(Color.GRAY);
-        mNormalTimeMarkPaint.setStrokeWidth(1);
-        mNormalTimeMarkPaint.setTextSize(mTimeTextSize);
-        mNormalTimeMarkPaint.setTextAlign(Paint.Align.CENTER);
+        mMarkLinePaint = new Paint();
+        mMarkLinePaint.setAntiAlias(true);
+        mMarkLinePaint.setStyle(Paint.Style.STROKE);
+        mMarkLinePaint.setColor(Color.GRAY);
+        mMarkLinePaint.setStrokeWidth(1);
+
+        mTimeTextPaint = new Paint();
+        mTimeTextPaint.setAntiAlias(true);
+        mTimeTextPaint.setStyle(Paint.Style.FILL);
+        mTimeTextPaint.setColor(Color.GRAY);
+        mTimeTextPaint.setStrokeWidth(1);
+        mTimeTextPaint.setTextSize(mTimeTextSize);
+        mTimeTextPaint.setTextAlign(Paint.Align.CENTER);
 
         mDataMarkPaint = new Paint();
         mDataMarkPaint.setAntiAlias(true);
@@ -107,20 +107,20 @@ public class CsmTimeAxisView extends View {
         mDataMarkPaint.setStrokeWidth(1);
     }
 
-    private void initTestDatas() {
-        mTestDatas = new ArrayList<>();
+    private void initTestData() {
+        mTestData = new ArrayList<>();
         RecordFile recordFile;
         for (int i = 0; i < 11; i++) {
             recordFile = new RecordFile();
             Calendar calendar = Calendar.getInstance();
-//            Log.e(TAG, "initTestDatas: calendar1=" + calendar.hashCode());
+//            Log.e(TAG, "initTestData: calendar1=" + calendar.hashCode());
             calendar.setTime(new Date());
             calendar.set(Calendar.HOUR_OF_DAY, i * 2 + 1);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
             recordFile.setStartTime(calendar);
             calendar = Calendar.getInstance();
-//            Log.e(TAG, "initTestDatas: calendar2=" + calendar.hashCode());
+//            Log.e(TAG, "initTestData: calendar2=" + calendar.hashCode());
             calendar.setTime(new Date());
             if (i == 10) {
                 calendar.set(Calendar.HOUR_OF_DAY, 23);
@@ -132,64 +132,66 @@ public class CsmTimeAxisView extends View {
                 calendar.set(Calendar.SECOND, 0);
             }
             recordFile.setStopTime(calendar);
-            mTestDatas.add(recordFile);
+            mTestData.add(recordFile);
         }
     }
 
+    //当子view设置的宽度超出父view提供的。会回调4次，giveWidth = 600（give）,7512(set),600,7512
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        final int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        Log.e(TAG, "onMeasure widthSize=" + widthSize + ",widthMode=" + widthMode + ",heightSize=" + heightSize + ",heightMode=" + heightMode);
+        final int giveWidth = MeasureSpec.getSize(widthMeasureSpec);
+        final int giveWidthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int giveHeight = MeasureSpec.getSize(heightMeasureSpec);
+        int giveHeightMode = MeasureSpec.getMode(heightMeasureSpec);
+        Log.e(TAG, "onMeasure widthSize=" + giveWidth + ",widthMode=" + giveWidthMode + ",heightSize=" + giveHeight + ",heightMode=" + giveHeightMode);
         //
-        mParentWidth = widthSize;
-        //
-        int width = (int) (mParentWidth + 24 * 3600 * mOneSecondWidth);
-        int height = getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec);
+        if (mParentGiveWidth == -1 || mParentGiveWidth == giveWidth) {
+            mParentGiveWidth = giveWidth;
+            //计算自己需要的宽度
+            int width = (int) (mParentGiveWidth + 24 * 3600 * mOneSecondWidth);
 
-        setMeasuredDimension(width, height);
-        Log.e(TAG, "onMeasure mParentWidth=" + mParentWidth + ",width=" + width + ",height=" + height);
+            setMeasuredDimension(width, giveHeight);
+        } else {
+            setMeasuredDimension(giveWidth, giveHeight);
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.e(TAG, "onDraw");
-        drawAxisLine(canvas);
         drawMarkLine(canvas);
-        if (mDatas == null || mDatas.size() == 0) {
-            if (mTestDatas == null) initTestDatas();
-            mDatas = mTestDatas;
+        if (mData == null || mData.size() == 0) {
+            if (mTestData == null) initTestData();
+            mData = mTestData;
         }
         drawDataMarkArea(canvas);
     }
 
     private void drawDataMarkArea(Canvas canvas) {
         canvas.save();
-        final int markLineAreaHeight = getHeight() - mTimeTextMarginTop - mTimeTextSize - getPaddingBottom() - getPaddingTop();
+        final int height = getDataMarkHeight();
         //先把坐标系移动到00:00位置
-        canvas.translate(mParentWidth / 2, markLineAreaHeight + getPaddingTop());
-        int size = mDatas.size();
+        canvas.translate(mParentGiveWidth / 2, getPaddingTop() + height);
+        int areaCount = mData.size();
         RecordFile ezDeviceRecordFile;
         Path path = new Path();
         float coordinateXMoveDis;
-        float dataMarkAreaWidth;
-        for (int i = 0; i < size; i++) {
+        float areaWidth;
+        for (int i = 0; i < areaCount; i++) {
             path.reset();
-            ezDeviceRecordFile = mDatas.get(i);
+            ezDeviceRecordFile = mData.get(i);
             coordinateXMoveDis = getCoordinateXMoveDis(ezDeviceRecordFile.getStartTime());
-            canvas.translate(coordinateXMoveDis, 0);//坐标原点移动到某个录像方形的左下角点位
+            //将坐标系原点移动到某个录像方形的左下角点位
+            canvas.translate(coordinateXMoveDis, 0);
             path.moveTo(0, 0);//从左下角开始画
-            path.lineTo(0, -markLineAreaHeight);//连线到左上角
-            dataMarkAreaWidth = getDataMarkAreaWidth(ezDeviceRecordFile.getStartTime(), ezDeviceRecordFile.getStopTime());
-            path.lineTo(dataMarkAreaWidth, -markLineAreaHeight);//连线到右上角
-            path.lineTo(dataMarkAreaWidth, 0);//连线到右下角
+            path.lineTo(0, -height);//连线到左上角
+            areaWidth = getDataMarkAreaWidth(ezDeviceRecordFile.getStartTime(), ezDeviceRecordFile.getStopTime());
+            path.lineTo(areaWidth, -height);//连线到右上角
+            path.lineTo(areaWidth, 0);//连线到右下角
             path.close();
             canvas.drawPath(path, mDataMarkPaint);
-            //将坐标恢复到00:00位置
+            //将坐标系恢复原位
             canvas.translate(-coordinateXMoveDis, 0);
         }
         canvas.restore();
@@ -197,6 +199,10 @@ public class CsmTimeAxisView extends View {
 
     private float getDataMarkAreaWidth(Calendar startTime, Calendar stopTime) {
         return (stopTime.getTimeInMillis() - startTime.getTimeInMillis()) / 1000 * mOneSecondWidth;
+    }
+
+    public int getDataMarkHeight() {
+        return getHeight() - mTimeTextMarginTop - mTimeTextSize - getPaddingBottom() - getPaddingTop();
     }
 
     /**
@@ -210,32 +216,37 @@ public class CsmTimeAxisView extends View {
     }
 
     private void drawMarkLine(Canvas canvas) {
-        int size = 24 * 60 / mIntervalMinutes;//
-        final int reference = 60 / mIntervalMinutes;
-        final int markLineAreaHeight = getHeight() - mTimeTextMarginTop - mTimeTextSize - getPaddingBottom() - getPaddingTop();
-//        Log.e(TAG, ">>>drawMarkLine: getPaddingBottom()=" + getPaddingBottom());
-        mMarkLineAreaHeight = markLineAreaHeight;
-        final int timeMarkY = mTimeTextMarginTop + mTimeTextSize;
-        final int hourMarkHeight = markLineAreaHeight;
-        final int intervalMarkHeight = markLineAreaHeight * 1 / 3;
-        final int halfHourMarkHeight = markLineAreaHeight * 2 / 3;
+        //底部记号线
+        int y = getHeight() - mTimeTextMarginTop - mTimeTextSize - getPaddingBottom();
+        mMarkLinePaint.setColor(Color.RED);
+        canvas.drawLine(0, y, getWidth(), y, mMarkLinePaint);
+
+        //垂直记号线
+        mMarkLinePaint.setColor(Color.GRAY);
+
+        int intervalCount = 24 * 60 / mIntervalMinutes;
+        final int hourMarkLineIndex = 60 / mIntervalMinutes;
+        final int timeMarkHeight = mTimeTextMarginTop + mTimeTextSize;
+        final int hourMarkLineHeight = getDataMarkHeight();
+        ;
+        final int intervalMarkLineHeight = hourMarkLineHeight * 1 / 3;
+        final int halfHourMarkLineHeight = hourMarkLineHeight * 2 / 3;
         canvas.save();
-        canvas.translate(mParentWidth / 2, markLineAreaHeight + getPaddingTop());
-        //画00:00刻度线
-        canvas.drawLine(0, 0, 0, -hourMarkHeight, mNormalMarkPaint);
-        canvas.drawText(getHourString(0, false), 0, timeMarkY, mNormalTimeMarkPaint);
-//        float markMoveDis = 0;
-//        final float halfScreenW = mParentWidth/2;
-        for (int i = 0; i < size; i++) {
+        canvas.translate(mParentGiveWidth / 2, getPaddingTop() + hourMarkLineHeight);
+        //画00:00标记线
+        canvas.drawLine(0, 0, 0, -hourMarkLineHeight, mMarkLinePaint);
+        canvas.drawText(getHourString(0, false), 0, timeMarkHeight, mTimeTextPaint);
+        //画后面的标记线
+        for (int i = 0; i < intervalCount; i++) {
             canvas.translate(mIntervalWidth, 0);
-            if ((i + 1) % reference == 0) {//画小时刻度
-                canvas.drawLine(0, 0, 0, -hourMarkHeight, mNormalMarkPaint);
-                canvas.drawText(getHourString((i + 1) / reference, false), 0, timeMarkY, mNormalTimeMarkPaint);
-            } else if ((i + 1) % reference == reference / 2) {//画半小时刻度
-                canvas.drawLine(0, 0, 0, -halfHourMarkHeight, mNormalMarkPaint);
-                canvas.drawText(getHourString((i + 1) / reference, true), 0, timeMarkY, mNormalTimeMarkPaint);
+            if ((i + 1) % hourMarkLineIndex == 0) {//画小时刻度
+                canvas.drawLine(0, 0, 0, -hourMarkLineHeight, mMarkLinePaint);
+                canvas.drawText(getHourString((i + 1) / hourMarkLineIndex, false), 0, timeMarkHeight, mTimeTextPaint);
+            } else if ((i + 1) % hourMarkLineIndex == hourMarkLineIndex / 2) {//画半小时刻度
+                canvas.drawLine(0, 0, 0, -halfHourMarkLineHeight, mMarkLinePaint);
+                canvas.drawText(getHourString((i + 1) / hourMarkLineIndex, true), 0, timeMarkHeight, mTimeTextPaint);
             } else {
-                canvas.drawLine(0, 0, 0, -intervalMarkHeight, mNormalMarkPaint);
+                canvas.drawLine(0, 0, 0, -intervalMarkLineHeight, mMarkLinePaint);
             }
         }
         canvas.restore();
@@ -262,13 +273,6 @@ public class CsmTimeAxisView extends View {
             }
             return sb.toString();
         }
-    }
-
-    private void drawAxisLine(Canvas canvas) {
-        int y = getHeight() - mTimeTextMarginTop - mTimeTextSize - getPaddingBottom();
-        mNormalMarkPaint.setColor(Color.RED);
-        canvas.drawLine(0, y, getWidth(), y, mNormalMarkPaint);
-        mNormalMarkPaint.setColor(Color.GRAY);
     }
 
     @Override
@@ -329,7 +333,7 @@ public class CsmTimeAxisView extends View {
                 scrollBy(-dx, 0);//同步执行
                 //回调时间
                 scrollX = getScrollX();
-                if (scrollX >= 0 && scrollX < getWidth() - mParentWidth) {
+                if (scrollX >= 0 && scrollX < getWidth() - mParentGiveWidth) {
                     callbackTime(true);
                 }
                 mLastX = x;
@@ -340,8 +344,8 @@ public class CsmTimeAxisView extends View {
 
                 if (scrollX < 0) {
                     scrollTo(0, 0);
-                } else if (scrollX > getWidth() - mParentWidth) {
-                    scrollTo((int) (getWidth() - mParentWidth), 0);
+                } else if (scrollX > getWidth() - mParentGiveWidth) {
+                    scrollTo((int) (getWidth() - mParentGiveWidth), 0);
                 }
                 if (CsmTimeAxisLayout.DEBUG) Log.e(TAG, "onTouchEvent 手指抬起 scrollX=" + scrollX);
                 //回调时间
@@ -425,8 +429,8 @@ public class CsmTimeAxisView extends View {
                     public void accept(Long aLong) throws Exception {
                         Log.e(TAG, "时间轴正在自动前进...");
                         long timeMilli = getCurrentTime().getTime();
-                        if (!isBelongTo(timeMilli, getNextRecordFileToPlay(timeMilli, mDatas))) {
-                            timeMilli = getPlayStartTime(timeMilli, getNextRecordFileToPlay(timeMilli, mDatas)).getTimeInMillis();
+                        if (!isBelongTo(timeMilli, getNextRecordFileToPlay(timeMilli, mData))) {
+                            timeMilli = getPlayStartTime(timeMilli, getNextRecordFileToPlay(timeMilli, mData)).getTimeInMillis();
                         }
 
                         setCurrentTime(timeMilli + 1000);
@@ -444,8 +448,8 @@ public class CsmTimeAxisView extends View {
 
     public void setData(List<RecordFile> datas) {
         Log.e(TAG, "setData: ");
-        mDatas = datas;
-        if (mDatas != null && mDatas.size() > 0) {
+        mData = datas;
+        if (mData != null && mData.size() > 0) {
             invalidate();
         }
     }
@@ -477,10 +481,6 @@ public class CsmTimeAxisView extends View {
         }
         mScroller.startScroll(getScrollX(), getScrollY(), dx, 0);
         invalidate();
-    }
-
-    public float getMarkLineAreaHeight() {
-        return mMarkLineAreaHeight;
     }
 
     /**

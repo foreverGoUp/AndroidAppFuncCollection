@@ -1,4 +1,4 @@
-package com.kc.common_service.widget;
+package com.kc.module_home.widget;
 
 
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import com.kc.common_service.R;
+import com.kc.module_home.R;
 
 /**
  * @author ckc

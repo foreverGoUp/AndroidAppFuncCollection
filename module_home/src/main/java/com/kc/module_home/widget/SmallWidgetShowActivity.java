@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dovar.router_annotation.Route;
 import com.kc.common_service.base.AppBaseActivity;
+import com.kc.common_service.widget.SquareVerifyCodeView;
 import com.kc.common_service.widget.horizontalScrollScaleGallery.HorizontalScrollScaleGalleryHelper;
 import com.kc.common_service.widget.timeAxis.CsmTimeAxisView;
 import com.kc.module_home.R;
@@ -23,7 +24,6 @@ import java.util.List;
 import ckc.android.develophelp.lib.base.mvvm.BaseViewModel;
 import ckc.android.develophelp.lib.util.TimeUtils;
 import ckc.android.develophelp.lib.util.ToastUtils;
-import ckc.android.develophelp.lib.widget.SquareVerifyCodeView;
 
 @Route(path = "widget/small")
 public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidgetShowBinding, BaseViewModel> {
@@ -35,8 +35,10 @@ public class SmallWidgetShowActivity extends AppBaseActivity<ActivitySmallWidget
 
     @Override
     protected void onInit(Bundle savedInstanceState) {
+
+
         //csmTimeAxisLayout
-        mDataBinding.csmTimeAxisLayout.getTimeAxisView().setListener(new CsmTimeAxisView.OnCsmTimeAxisListener() {
+        mDataBinding.csmTimeAxisView.setListener(new CsmTimeAxisView.OnCsmTimeAxisListener() {
             @Override
             public void onTimeAxisMoveStart() {
 

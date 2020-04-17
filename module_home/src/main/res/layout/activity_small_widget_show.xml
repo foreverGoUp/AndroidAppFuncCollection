@@ -18,6 +18,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="文字颜色渐变tv"
+                android:textStyle="bold" />
+
+            <com.kc.module_home.widget.GradientColorTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:svcv_square_width="@dimen/sp_20"
+                android:text="进击的巨人" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="时间轴"
                 android:textStyle="bold" />
 
@@ -34,11 +46,16 @@
                 android:background="@android:drawable/toast_frame" />
 
             <com.kc.common_service.widget.timeAxis.CsmTimeAxisLayout
-                android:id="@+id/csmTimeAxisLayout"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="@dimen/dp_300"
                 android:layout_height="@dimen/dp_150"
-                android:layout_marginTop="@dimen/dp_10" />
+                android:paddingTop="@dimen/dp_10">
+
+                <com.kc.common_service.widget.timeAxis.CsmTimeAxisView
+                    android:id="@+id/csmTimeAxisView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </com.kc.common_service.widget.timeAxis.CsmTimeAxisLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -70,21 +87,19 @@
                 android:text="方框验证码控件"
                 android:textStyle="bold" />
 
-            <ckc.android.develophelp.lib.widget.SquareVerifyCodeView
+            <com.kc.common_service.widget.SquareVerifyCodeView
                 android:id="@+id/squareVerifyCodeView"
-                android:layout_width="@dimen/dp_200"
-                android:layout_height="@dimen/dp_200"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="@dimen/sp_20"
                 android:textStyle="italic"
-                app:svcv_square_interval="@dimen/dp_10"
+                app:svcv_square_interval="@dimen/dp_20"
                 app:svcv_square_number="4"
                 app:svcv_square_selected_bg="@drawable/shape_verify_code_square_selected_bg"
                 app:svcv_square_unselected_bg="@drawable/shape_verify_code_square_unselected_bg"
-                app:svcv_square_width="@dimen/dp_40" />
+                app:svcv_square_width="@dimen/dp_50" />
+
 
             <TextView
                 android:layout_width="wrap_content"
